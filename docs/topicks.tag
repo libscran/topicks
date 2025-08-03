@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <tagfile doxygen_version="1.12.0">
+  <compound kind="file">
+    <name>topicks.hpp</name>
+    <path>topicks/</path>
+    <filename>topicks_8hpp.html</filename>
+    <class kind="struct">topicks::PickTopGenesOptions</class>
+  </compound>
   <compound kind="struct">
     <name>topicks::PickTopGenesOptions</name>
     <filename>structtopicks_1_1PickTopGenesOptions.html</filename>

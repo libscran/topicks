@@ -2,23 +2,29 @@ var indexSectionsWithContent =
 {
   0: "bgkpt",
   1: "p",
-  2: "bk",
-  3: "gpt"
+  2: "t",
+  3: "p",
+  4: "bk",
+  5: "gpt"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "variables",
-  3: "pages"
+  2: "files",
+  3: "functions",
+  4: "variables",
+  5: "pages"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Variables",
-  3: "Pages"
+  2: "Files",
+  3: "Functions",
+  4: "Variables",
+  5: "Pages"
 };
 

@@ -102,7 +102,7 @@ $(function(){ initResizable(false); });
 <p>The <b>topicks</b> library implements a <code>pick_top_genes()</code> function to pick the top genes based on some statistic. The idea is to use this to choose highly variable genes based on their variances (e.g., from <a href="https://github.com/libscran/scran_variances"><b>scran_variances</b></a>), or for picking the best markers based on a differential expression statistic (e.g., from <a href="https://github.com/libscran/scran_markers"><b>scran_markers</b></a>). This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices.</p>
 <h1>Quick start</h1>
 <p>We can obtain an array of booleans indicating whether each gene was picked based on its <code>stats</code>:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;topicks/topicks.hpp&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="topicks_8hpp.html">topicks/topicks.hpp</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line">std::vector&lt;double&gt; stats(100); <span class="comment">// vector of per-gene statistics.</span></div>
 <div class="line"><a class="code hl_struct" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions&lt;double&gt;</a> opts;</div>
@@ -113,7 +113,8 @@ $(function(){ initResizable(false); });
 <div class="line">    <span class="keyword">true</span>, <span class="comment">// whether to pick genes with the largest &#39;stats&#39;.</span></div>
 <div class="line">    opts</div>
 <div class="line">);</div>
-<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicker.hpp:23</div></div>
+<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicks.hpp:23</div></div>
+<div class="ttc" id="atopicks_8hpp_html"><div class="ttname"><a href="topicks_8hpp.html">topicks.hpp</a></div><div class="ttdoc">Choose top genes for downstream analyses.</div></div>
 </div><!-- fragment --><p>Alternatively we can obtain an array of integer indices:</p>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> idx = topicks::pick_top_genes_index(stats.size(), stats.data(), 10, <span class="keyword">true</span>, opts);</div>
 </div><!-- fragment --><p>By default, ties at the selection boundary are retained so the actual number of chosen genes may be greater than what was requested. This can be disabled via the <code>PickTopGenesOptions</code> options:</p>
