@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>topicker: topicker/topicker.hpp Source File</title>
+<title>topicks: topicker/topicker.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -33,7 +33,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">topicker
+   <div id="projectname">topicks
    </div>
    <div id="projectbrief">Pick top genes for downstream analyses</div>
   </td>
@@ -100,7 +100,7 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">topicker.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="topicker_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TOPICKER_TOPICKER_HPP</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TOPICKER_TOPICKER_HPP</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TOPICKER_TOPICKER_HPP</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -110,21 +110,21 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;sanisizer/sanisizer.hpp&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span>topicker {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span>topicks {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Stat_&gt;</div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structtopicker_1_1PickTopGenesOptions.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structtopicker_1_1PickTopGenesOptions.html">PickTopGenesOptions</a> {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">   29</a></span>    std::optional&lt;Stat_&gt; <a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structtopicks_1_1PickTopGenesOptions.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">   29</a></span>    std::optional&lt;Stat_&gt; <a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structtopicker_1_1PickTopGenesOptions.html#aaf1f770e7b5d14f947f7d23c2685a4e4">   35</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#aaf1f770e7b5d14f947f7d23c2685a4e4">keep_ties</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structtopicks_1_1PickTopGenesOptions.html#a2db78cb727b9c6e9c687127ee5bbbb69">   35</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#a2db78cb727b9c6e9c687127ee5bbbb69">keep_ties</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
 </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span>internal {</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> keep_index_, <span class="keyword">typename</span> Index_, <span class="keyword">typename</span> Stat_, <span class="keyword">typename</span> Top_, <span class="keyword">class</span> Output_, <span class="keyword">class</span> Cmp_, <span class="keyword">class</span> CmpEqual_&gt;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> <a class="code hl_function" href="topicker_8hpp.html#a7ba1fc253aeafa60efad7ca0525939ec">pick_top_genes</a>(Index_ n, <span class="keyword">const</span> Stat_* statistic, Top_ top, Output_&amp; output, Cmp_ cmp, CmpEqual_ cmpeq, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicker_1_1PickTopGenesOptions.html">PickTopGenesOptions&lt;Stat_&gt;</a>&amp; options) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keywordtype">void</span> pick_top_genes(Index_ n, <span class="keyword">const</span> Stat_* statistic, Top_ top, Output_&amp; output, Cmp_ cmp, CmpEqual_ cmpeq, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions&lt;Stat_&gt;</a>&amp; options) {</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (top == 0) {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(keep_index_) {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            ; <span class="comment">// no-op, we assume it&#39;s already empty.</span></div>
@@ -135,8 +135,8 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (sanisizer::is_greater_than(top, n)) {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>.has_value()) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keyword">auto</span> bound = *(options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>.has_value()) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keyword">auto</span> bound = *(options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">for</span> (Index_ i = 0; i &lt; n; ++i) {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keywordtype">bool</span> ok = cmp(statistic[i], bound);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(keep_index_) {</div>
@@ -171,9 +171,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    });</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    Stat_ threshold = statistic[*cMid];</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#aaf1f770e7b5d14f947f7d23c2685a4e4">keep_ties</a>) {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>.has_value() &amp;&amp; !cmp(threshold, *(options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>))) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keyword">auto</span> bound = *(options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#a2db78cb727b9c6e9c687127ee5bbbb69">keep_ties</a>) {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>.has_value() &amp;&amp; !cmp(threshold, *(options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>))) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keyword">auto</span> bound = *(options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>);</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <span class="keywordflow">for</span> (Index_ i = 0; i &lt; n; ++i) {</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                <span class="keywordtype">bool</span> ok = cmp(statistic[i], bound);</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <span class="keywordflow">if</span> <span class="keyword">constexpr</span>(keep_index_) {</div>
@@ -205,8 +205,8 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        std::fill_n(output, n, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>.has_value()) {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">auto</span> bound = *(options.<a class="code hl_variable" href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">bound</a>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">if</span> (options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>.has_value()) {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">auto</span> bound = *(options.<a class="code hl_variable" href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">bound</a>);</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        Index_ counter = top; <span class="comment">// cast is known safe as top &lt;= n.</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">while</span> (counter &gt; 0) {</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            --counter;</div>
@@ -236,8 +236,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Stat_, <span class="keyword">typename</span> Top_, <span class="keyword">typename</span> Bool_&gt;</div>
-<div class="foldopen" id="foldopen00179" data-start="{" data-end="}">
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="topicker_8hpp.html#a7ba1fc253aeafa60efad7ca0525939ec">  179</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="topicker_8hpp.html#a7ba1fc253aeafa60efad7ca0525939ec">pick_top_genes</a>(std::size_t n, <span class="keyword">const</span> Stat_* statistic, Top_ top, <span class="keywordtype">bool</span> larger, Bool_* output, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicker_1_1PickTopGenesOptions.html">PickTopGenesOptions&lt;Stat_&gt;</a>&amp; options) {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="keywordtype">void</span> pick_top_genes(std::size_t n, <span class="keyword">const</span> Stat_* statistic, Top_ top, <span class="keywordtype">bool</span> larger, Bool_* output, <span class="keyword">const</span> PickTopGenesOptions&lt;Stat_&gt;&amp; options) {</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (larger) {</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        internal::pick_top_genes&lt;false&gt;(</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            n, </div>
@@ -260,24 +259,20 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        );</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>}</div>
-</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Bool_, <span class="keyword">typename</span> Stat_, <span class="keyword">typename</span> Top_&gt;</div>
-<div class="foldopen" id="foldopen00217" data-start="{" data-end="}">
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="topicker_8hpp.html#a948771e7696349ac166d688bd18eecdd">  217</a></span>std::vector&lt;Bool_&gt; <a class="code hl_function" href="topicker_8hpp.html#a7ba1fc253aeafa60efad7ca0525939ec">pick_top_genes</a>(std::size_t n, <span class="keyword">const</span> Stat_* statistic, Top_ top, <span class="keywordtype">bool</span> larger, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicker_1_1PickTopGenesOptions.html">PickTopGenesOptions&lt;Stat_&gt;</a>&amp; options) {</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>std::vector&lt;Bool_&gt; pick_top_genes(std::size_t n, <span class="keyword">const</span> Stat_* statistic, Top_ top, <span class="keywordtype">bool</span> larger, <span class="keyword">const</span> PickTopGenesOptions&lt;Stat_&gt;&amp; options) {</div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">auto</span> output = sanisizer::create&lt;std::vector&lt;Bool_&gt; &gt;(n</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="preprocessor">#ifdef SCRAN_VARIANCES_TEST_INIT</span></div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        , SCRAN_VARIANCES_TEST_INIT</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    );</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <a class="code hl_function" href="topicker_8hpp.html#a7ba1fc253aeafa60efad7ca0525939ec">pick_top_genes</a>(n, statistic, top, larger, output.data(), options);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    pick_top_genes(n, statistic, top, larger, output.data(), options);</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordflow">return</span> output;</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>}</div>
-</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Index_, <span class="keyword">typename</span> Stat_, <span class="keyword">typename</span> Top_&gt;</div>
-<div class="foldopen" id="foldopen00242" data-start="{" data-end="}">
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="topicker_8hpp.html#ad906848eb4791c94787a655f4c274e4e">  242</a></span>std::vector&lt;Index_&gt; <a class="code hl_function" href="topicker_8hpp.html#ad906848eb4791c94787a655f4c274e4e">pick_top_genes_index</a>(Index_ n, <span class="keyword">const</span> Stat_* statistic, Top_ top, <span class="keywordtype">bool</span> larger, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicker_1_1PickTopGenesOptions.html">PickTopGenesOptions&lt;Stat_&gt;</a>&amp; options) {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>std::vector&lt;Index_&gt; pick_top_genes_index(Index_ n, <span class="keyword">const</span> Stat_* statistic, Top_ top, <span class="keywordtype">bool</span> larger, <span class="keyword">const</span> PickTopGenesOptions&lt;Stat_&gt;&amp; options) {</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    std::vector&lt;Index_&gt; output;</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keywordflow">if</span> (larger) {</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        internal::pick_top_genes&lt;true&gt;(</div>
@@ -302,16 +297,13 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    }</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <span class="keywordflow">return</span> output;</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>}</div>
-</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>}</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructtopicker_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicker_1_1PickTopGenesOptions.html">topicker::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicker.hpp:23</div></div>
-<div class="ttc" id="astructtopicker_1_1PickTopGenesOptions_html_a0a39290904eca4d0bd1a0353fe2701ac"><div class="ttname"><a href="structtopicker_1_1PickTopGenesOptions.html#a0a39290904eca4d0bd1a0353fe2701ac">topicker::PickTopGenesOptions::bound</a></div><div class="ttdeci">std::optional&lt; Stat_ &gt; bound</div><div class="ttdef"><b>Definition</b> topicker.hpp:29</div></div>
-<div class="ttc" id="astructtopicker_1_1PickTopGenesOptions_html_aaf1f770e7b5d14f947f7d23c2685a4e4"><div class="ttname"><a href="structtopicker_1_1PickTopGenesOptions.html#aaf1f770e7b5d14f947f7d23c2685a4e4">topicker::PickTopGenesOptions::keep_ties</a></div><div class="ttdeci">bool keep_ties</div><div class="ttdef"><b>Definition</b> topicker.hpp:35</div></div>
-<div class="ttc" id="atopicker_8hpp_html_a7ba1fc253aeafa60efad7ca0525939ec"><div class="ttname"><a href="topicker_8hpp.html#a7ba1fc253aeafa60efad7ca0525939ec">topicker::pick_top_genes</a></div><div class="ttdeci">void pick_top_genes(std::size_t n, const Stat_ *statistic, Top_ top, bool larger, Bool_ *output, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</div><div class="ttdef"><b>Definition</b> topicker.hpp:179</div></div>
-<div class="ttc" id="atopicker_8hpp_html_ad906848eb4791c94787a655f4c274e4e"><div class="ttname"><a href="topicker_8hpp.html#ad906848eb4791c94787a655f4c274e4e">topicker::pick_top_genes_index</a></div><div class="ttdeci">std::vector&lt; Index_ &gt; pick_top_genes_index(Index_ n, const Stat_ *statistic, Top_ top, bool larger, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</div><div class="ttdef"><b>Definition</b> topicker.hpp:242</div></div>
+<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicker.hpp:23</div></div>
+<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html_a2db78cb727b9c6e9c687127ee5bbbb69"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html#a2db78cb727b9c6e9c687127ee5bbbb69">topicks::PickTopGenesOptions::keep_ties</a></div><div class="ttdeci">bool keep_ties</div><div class="ttdef"><b>Definition</b> topicker.hpp:35</div></div>
+<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html_afce1d913773d4cca49ccc07a7f952f88"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html#afce1d913773d4cca49ccc07a7f952f88">topicks::PickTopGenesOptions::bound</a></div><div class="ttdeci">std::optional&lt; Stat_ &gt; bound</div><div class="ttdef"><b>Definition</b> topicker.hpp:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

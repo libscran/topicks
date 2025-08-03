@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>topicker: Pick top genes</title>
+<title>topicks: Pick top genes</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -33,7 +33,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">topicker
+   <div id="projectname">topicks
    </div>
    <div id="projectbrief">Pick top genes for downstream analyses</div>
   </td>
@@ -97,52 +97,51 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2README"></a></p>
-<p><img src="https://github.com/libscran/topicker/actions/workflows/run-tests.yaml/badge.svg" alt="Unit tests" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/topicker/actions/workflows/doxygenate.yaml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/> <a href="https://codecov.io/gh/libscran/topicker"><img src="https://codecov.io/gh/libscran/topicker/graph/badge.svg?token=JWV0I4WJX2" alt="Codecov" style="pointer-events: none;" class="inline"/></a></p>
+<p><img src="https://github.com/libscran/topicks/actions/workflows/run-tests.yaml/badge.svg" alt="Unit tests" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/topicks/actions/workflows/doxygenate.yaml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/> <a href="https://codecov.io/gh/libscran/topicks"><img src="https://codecov.io/gh/libscran/topicks/graph/badge.svg?token=JWV0I4WJX2" alt="Codecov" style="pointer-events: none;" class="inline"/></a></p>
 <h1>Overview</h1>
-<p>The <b>topicker</b> library implements a <code>pick_top_genes()</code> function to pick the top genes based on some statistic. The idea is to use this to choose highly variable genes based on their variances (e.g., from <a href="https://github.com/libscran/scran_variances"><b>scran_variances</b></a>), or for picking the best markers based on a differential expression statistic (e.g., from <a href="https://github.com/libscran/scran_markers"><b>scran_markers</b></a>). This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices.</p>
+<p>The <b>topicks</b> library implements a <code>pick_top_genes()</code> function to pick the top genes based on some statistic. The idea is to use this to choose highly variable genes based on their variances (e.g., from <a href="https://github.com/libscran/scran_variances"><b>scran_variances</b></a>), or for picking the best markers based on a differential expression statistic (e.g., from <a href="https://github.com/libscran/scran_markers"><b>scran_markers</b></a>). This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices.</p>
 <h1>Quick start</h1>
 <p>We can obtain an array of booleans indicating whether each gene was picked based on its <code>stats</code>:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="topicker_8hpp.html">topicker/topicker.hpp</a>&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;topicks/topicks.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line">std::vector&lt;double&gt; stats(100); <span class="comment">// vector of per-gene statistics.</span></div>
-<div class="line"><a class="code hl_struct" href="structtopicker_1_1PickTopGenesOptions.html">topicker::PickTopGenesOptions&lt;double&gt;</a> opts;</div>
-<div class="line"><span class="keyword">auto</span> filter = topicker::pick_top_genes(</div>
+<div class="line"><a class="code hl_struct" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions&lt;double&gt;</a> opts;</div>
+<div class="line"><span class="keyword">auto</span> filter = topicks::pick_top_genes(</div>
 <div class="line">    stats.size(),</div>
 <div class="line">    stats.data(),</div>
 <div class="line">    10, <span class="comment">// number of top genes to pick.</span></div>
 <div class="line">    <span class="keyword">true</span>, <span class="comment">// whether to pick genes with the largest &#39;stats&#39;.</span></div>
 <div class="line">    opts</div>
 <div class="line">);</div>
-<div class="ttc" id="astructtopicker_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicker_1_1PickTopGenesOptions.html">topicker::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicker.hpp:23</div></div>
-<div class="ttc" id="atopicker_8hpp_html"><div class="ttname"><a href="topicker_8hpp.html">topicker.hpp</a></div><div class="ttdoc">Choose top genes for downstream analyses.</div></div>
+<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicker.hpp:23</div></div>
 </div><!-- fragment --><p>Alternatively we can obtain an array of integer indices:</p>
-<div class="fragment"><div class="line"><span class="keyword">auto</span> idx = topicker::pick_top_genes_index(stats.size(), stats.data(), 10, <span class="keyword">true</span>, opts);</div>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> idx = topicks::pick_top_genes_index(stats.size(), stats.data(), 10, <span class="keyword">true</span>, opts);</div>
 </div><!-- fragment --><p>By default, ties at the selection boundary are retained so the actual number of chosen genes may be greater than what was requested. This can be disabled via the <code>PickTopGenesOptions</code> options:</p>
 <div class="fragment"><div class="line">opt.keep_ties = <span class="keyword">false</span>;</div>
 </div><!-- fragment --><p>We can also set an absolute bound on the statistic, e.g., to ensure that we never select marker genes with log-fold changes below some threshold:</p>
 <div class="fragment"><div class="line">opt.bound = 0.5;</div>
-</div><!-- fragment --><p>Check out the <a href="https://libscran.github.io/topicker">reference documentation</a> for more details.</p>
+</div><!-- fragment --><p>Check out the <a href="https://libscran.github.io/topicks">reference documentation</a> for more details.</p>
 <h1>Building projects</h1>
 <h2>CMake with <code>FetchContent</code></h2>
 <p>If you're using CMake, you just need to add something like this to your <code>CMakeLists.txt</code>:</p>
 <div class="fragment"><div class="line">include(FetchContent)</div>
 <div class="line"> </div>
 <div class="line">FetchContent_Declare(</div>
-<div class="line">  topicker</div>
-<div class="line">  GIT_REPOSITORY https://github.com/libscran/topicker</div>
+<div class="line">  topicks</div>
+<div class="line">  GIT_REPOSITORY https://github.com/libscran/topicks</div>
 <div class="line">  GIT_TAG master # or any version of interest</div>
 <div class="line">)</div>
 <div class="line"> </div>
-<div class="line">FetchContent_MakeAvailable(topicker)</div>
-</div><!-- fragment --><p>Then you can link to <b>topicker</b> to make the headers available during compilation:</p>
+<div class="line">FetchContent_MakeAvailable(topicks)</div>
+</div><!-- fragment --><p>Then you can link to <b>topicks</b> to make the headers available during compilation:</p>
 <div class="fragment"><div class="line"># For executables:</div>
-<div class="line">target_link_libraries(myexe libscran::topicker)</div>
+<div class="line">target_link_libraries(myexe libscran::topicks)</div>
 <div class="line"> </div>
 <div class="line"># For libaries</div>
-<div class="line">target_link_libraries(mylib INTERFACE libscran::topicker)</div>
+<div class="line">target_link_libraries(mylib INTERFACE libscran::topicks)</div>
 </div><!-- fragment --><h2>CMake with <code>find_package()</code></h2>
-<div class="fragment"><div class="line">find_package(libscran_topicker CONFIG REQUIRED)</div>
-<div class="line">target_link_libraries(mylib INTERFACE libscran::topicker)</div>
+<div class="fragment"><div class="line">find_package(libscran_topicks CONFIG REQUIRED)</div>
+<div class="line">target_link_libraries(mylib INTERFACE libscran::topicks)</div>
 </div><!-- fragment --><p>To install the library, use:</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake .. -DTOPICKER_TESTS=OFF</div>
