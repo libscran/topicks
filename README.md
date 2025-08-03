@@ -1,12 +1,12 @@
 # Pick top genes
 
-![Unit tests](https://github.com/libscran/topicker/actions/workflows/run-tests.yaml/badge.svg)
-![Documentation](https://github.com/libscran/topicker/actions/workflows/doxygenate.yaml/badge.svg)
-[![Codecov](https://codecov.io/gh/libscran/topicker/graph/badge.svg?token=JWV0I4WJX2)](https://codecov.io/gh/libscran/topicker)
+![Unit tests](https://github.com/libscran/topicks/actions/workflows/run-tests.yaml/badge.svg)
+![Documentation](https://github.com/libscran/topicks/actions/workflows/doxygenate.yaml/badge.svg)
+[![Codecov](https://codecov.io/gh/libscran/topicks/graph/badge.svg?token=JWV0I4WJX2)](https://codecov.io/gh/libscran/topicks)
 
 ## Overview
 
-The **topicker** library implements a `pick_top_genes()` function to pick the top genes based on some statistic.
+The **topicks** library implements a `pick_top_genes()` function to pick the top genes based on some statistic.
 The idea is to use this to choose highly variable genes based on their variances (e.g., from [**scran_variances**](https://github.com/libscran/scran_variances)),
 or for picking the best markers based on a differential expression statistic (e.g., from [**scran_markers**](https://github.com/libscran/scran_markers)).
 This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices. 
@@ -16,11 +16,11 @@ This functionality is surprisingly complex when we need to consider ties, absolu
 We can obtain an array of booleans indicating whether each gene was picked based on its `stats`:
 
 ```cpp
-#include "topicker/topicker.hpp"
+#include "topicks/topicks.hpp"
 
 std::vector<double> stats(100); // vector of per-gene statistics.
-topicker::PickTopGenesOptions<double> opts;
-auto filter = topicker::pick_top_genes(
+topicks::PickTopGenesOptions<double> opts;
+auto filter = topicks::pick_top_genes(
     stats.size(),
     stats.data(),
     10, // number of top genes to pick.
@@ -32,7 +32,7 @@ auto filter = topicker::pick_top_genes(
 Alternatively we can obtain an array of integer indices:
 
 ```cpp
-auto idx = topicker::pick_top_genes_index(stats.size(), stats.data(), 10, true, opts);
+auto idx = topicks::pick_top_genes_index(stats.size(), stats.data(), 10, true, opts);
 ```
 
 By default, ties at the selection boundary are retained so the actual number of chosen genes may be greater than what was requested.
@@ -48,7 +48,7 @@ We can also set an absolute bound on the statistic, e.g., to ensure that we neve
 opt.bound = 0.5;
 ```
 
-Check out the [reference documentation](https://libscran.github.io/topicker) for more details.
+Check out the [reference documentation](https://libscran.github.io/topicks) for more details.
 
 ## Building projects
 
@@ -60,29 +60,29 @@ If you're using CMake, you just need to add something like this to your `CMakeLi
 include(FetchContent)
 
 FetchContent_Declare(
-  topicker
-  GIT_REPOSITORY https://github.com/libscran/topicker
+  topicks
+  GIT_REPOSITORY https://github.com/libscran/topicks
   GIT_TAG master # or any version of interest
 )
 
-FetchContent_MakeAvailable(topicker)
+FetchContent_MakeAvailable(topicks)
 ```
 
-Then you can link to **topicker** to make the headers available during compilation:
+Then you can link to **topicks** to make the headers available during compilation:
 
 ```cmake
 # For executables:
-target_link_libraries(myexe libscran::topicker)
+target_link_libraries(myexe libscran::topicks)
 
 # For libaries
-target_link_libraries(mylib INTERFACE libscran::topicker)
+target_link_libraries(mylib INTERFACE libscran::topicks)
 ```
 
 ### CMake with `find_package()`
 
 ```cmake
-find_package(libscran_topicker CONFIG REQUIRED)
-target_link_libraries(mylib INTERFACE libscran::topicker)
+find_package(libscran_topicks CONFIG REQUIRED)
+target_link_libraries(mylib INTERFACE libscran::topicks)
 ```
 
 To install the library, use:

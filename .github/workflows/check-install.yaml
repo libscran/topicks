@@ -30,7 +30,7 @@ jobs:
         cmake_minimum_required(VERSION 3.24)
         project(test_install)
         add_executable(whee source.cpp)
-        find_package(libscran_topicker)
-        target_link_libraries(whee libscran::topicker)
+        find_package(libscran_topicks)
+        target_link_libraries(whee libscran::topicks)
         EOF
         cd _downstream && cmake -S . -B build

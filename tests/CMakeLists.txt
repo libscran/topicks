@@ -15,7 +15,7 @@ if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 macro(decorate_test target)
-    target_link_libraries(${target} topicker scran_tests)
+    target_link_libraries(${target} topicks scran_tests)
 
     target_compile_options(${target} PRIVATE -Wall -Werror -Wpedantic -Wextra)
 
@@ -27,9 +27,9 @@ macro(decorate_test target)
     gtest_discover_tests(${target})
 endmacro()
 
-add_executable(libtest src/topicker.cpp)
+add_executable(libtest src/topicks.cpp)
 decorate_test(libtest)
 
-add_executable(dirtytest src/topicker.cpp)
+add_executable(dirtytest src/topicks.cpp)
 decorate_test(dirtytest)
 target_compile_definitions(dirtytest PRIVATE "SCRAN_VARIANCES_TEST_INIT=scran_tests::initial_value()")

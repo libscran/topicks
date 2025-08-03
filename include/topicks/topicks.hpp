@@ -9,11 +9,11 @@
 #include "sanisizer/sanisizer.hpp"
 
 /**
- * @file topicker.hpp
+ * @file topicks.hpp
  * @brief Choose top genes for downstream analyses.
  */
 
-namespace topicker {
+namespace topicks {
 
 /**
  * @brief Options for `pick_top_genes()`.

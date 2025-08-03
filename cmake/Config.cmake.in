@@ -3,4 +3,4 @@
 include(CMakeFindDependencyMacro)
 find_dependency(ltla_sanisizer 0.1.0 CONFIG REQUIRED)
 
-include("${CMAKE_CURRENT_LIST_DIR}/libscran_topickerTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/libscran_topicksTargets.cmake")
