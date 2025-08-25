@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <numeric>
 #include <cstddef>
+#include <type_traits>
 
 #include "sanisizer/sanisizer.hpp"
 
@@ -40,8 +41,13 @@ struct PickTopGenesOptions {
  */
 namespace internal {
 
+template<typename Input_>
+std::remove_cv_t<std::remove_reference_t<Input_> > I(Input_ x) {
+    return x;
+}
+
 template<bool keep_index_, typename Index_, typename Stat_, typename Top_, class Output_, class Cmp_, class CmpEqual_>
-void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output, Cmp_ cmp, CmpEqual_ cmpeq, const PickTopGenesOptions<Stat_>& options) {
+void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Output_& output, const Cmp_ cmp, const CmpEqual_ cmpeq, const PickTopGenesOptions<Stat_>& options) {
     if (top == 0) {
         if constexpr(keep_index_) {
             ; // no-op, we assume it's already empty.
@@ -53,9 +59,9 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
 
     if (sanisizer::is_greater_than(top, n)) {
         if (options.bound.has_value()) {
-            auto bound = *(options.bound);
+            const auto bound = *(options.bound);
             for (Index_ i = 0; i < n; ++i) {
-                bool ok = cmp(statistic[i], bound);
+                const bool ok = cmp(statistic[i], bound);
                 if constexpr(keep_index_) {
                     if (ok) {
                         output.push_back(i);
@@ -66,7 +72,7 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
             }
         } else {
             if constexpr(keep_index_) {
-                output.resize(sanisizer::cast<decltype(output.size())>(n));
+                output.resize(sanisizer::cast<decltype(I(output.size()))>(n));
                 std::iota(output.begin(), output.end(), static_cast<Index_>(0));
             } else {
                 std::fill_n(output, n, true);
@@ -77,7 +83,7 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
 
     auto semi_sorted = sanisizer::create<std::vector<Index_> >(n);
     std::iota(semi_sorted.begin(), semi_sorted.end(), static_cast<Index_>(0));
-    auto cBegin = semi_sorted.begin(), cMid = cBegin + top - 1, cEnd = semi_sorted.end();
+    const auto cBegin = semi_sorted.begin(), cMid = cBegin + top - 1, cEnd = semi_sorted.end();
     std::nth_element(cBegin, cMid, cEnd, [&](Index_ l, Index_ r) -> bool { 
         auto L = statistic[l], R = statistic[r];
         if (L == R) {
@@ -86,13 +92,13 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
             return cmp(L, R);
         }
     });
-    Stat_ threshold = statistic[*cMid];
+    const Stat_ threshold = statistic[*cMid];
 
     if (options.keep_ties) {
         if (options.bound.has_value() && !cmp(threshold, *(options.bound))) {
-            auto bound = *(options.bound);
+            const auto bound = *(options.bound);
             for (Index_ i = 0; i < n; ++i) {
-                bool ok = cmp(statistic[i], bound);
+                const bool ok = cmp(statistic[i], bound);
                 if constexpr(keep_index_) {
                     if (ok) {
                         output.push_back(i);
@@ -103,7 +109,7 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
             }
         } else {
             for (Index_ i = 0; i < n; ++i) {
-                bool ok = cmpeq(statistic[i], threshold);
+                const bool ok = cmpeq(statistic[i], threshold);
                 if constexpr(keep_index_) {
                     if (ok) {
                         output.push_back(i);
@@ -117,13 +123,13 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
     }
 
     if constexpr(keep_index_) {
-        output.reserve(sanisizer::cast<decltype(output.size())>(top));
+        output.reserve(sanisizer::cast<decltype(I(output.size()))>(top));
     } else {
         std::fill_n(output, n, false);
     }
 
     if (options.bound.has_value()) {
-        auto bound = *(options.bound);
+        const auto bound = *(options.bound);
         Index_ counter = top; // cast is known safe as top <= n.
         while (counter > 0) {
             --counter;
@@ -140,7 +146,7 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
         if constexpr(keep_index_) {
             output.insert(output.end(), semi_sorted.begin(), semi_sorted.begin() + top);
         } else {
-            for (decltype(top) i = 0; i < top; ++i) {
+            for (decltype(I(top)) i = 0; i < top; ++i) {
                 output[semi_sorted[i]] = true;
             }
         }
@@ -169,14 +175,14 @@ void pick_top_genes(Index_ n, const Stat_* statistic, Top_ top, Output_& output,
  * - smaller than `top`, if `PickTopGenesOptions::bound` is set and `top` is greater than `X`,
  *   where `X` is the number of genes in the dataset with statistics greater than `PickTopGenesOptions::bound`
  *   (or less than the bound, if `PickTopGenesOptions::larger = false`).
- * - larger than `top`, if `PickTopGenesOptions::keep_ties = true` and there are multiple ties at the `top`-th chosen gene.
+ * - larger than `top`, if `PickTopGenesOptions::keep_ties = true` and there are tied statistics at the `top`-th chosen gene.
  * @param larger Whether the top genes are defined as those with larger statistics.
  * @param[out] output Pointer to an array of length `n`. 
- * On output, this is filled with `true` if the gene is to be retained and `false` otherwise.
+ * On output, the `i`-th element will be `true` if gene `i` is one of the top genes and `false` otherwise.
  * @param options Further options.
  */
 template<typename Stat_, typename Top_, typename Bool_>
-void pick_top_genes(std::size_t n, const Stat_* statistic, Top_ top, bool larger, Bool_* output, const PickTopGenesOptions<Stat_>& options) {
+void pick_top_genes(const std::size_t n, const Stat_* const statistic, const Top_ top, const bool larger, Bool_* const output, const PickTopGenesOptions<Stat_>& options) {
     if (larger) {
         internal::pick_top_genes<false>(
             n, 
@@ -207,14 +213,14 @@ void pick_top_genes(std::size_t n, const Stat_* statistic, Top_ top, bool larger
  *
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n`, containing the statistics with which to rank genes.
- * @param top Number of top genes to choose, see the `pick_top_genes()` overload for comments.
+ * @param top Number of top genes to choose, see the `pick_top_genes()` overload for more details.
  * @param larger Whether the top genes are defined as those with larger statistics.
  * @param options Further options.
  *
  * @return A vector of booleans of length `n`, indicating whether each gene is to be retained.
  */
 template<typename Bool_, typename Stat_, typename Top_>
-std::vector<Bool_> pick_top_genes(std::size_t n, const Stat_* statistic, Top_ top, bool larger, const PickTopGenesOptions<Stat_>& options) {
+std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statistic, const Top_ top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
     auto output = sanisizer::create<std::vector<Bool_> >(n
 #ifdef SCRAN_VARIANCES_TEST_INIT
         , SCRAN_VARIANCES_TEST_INIT
@@ -231,7 +237,7 @@ std::vector<Bool_> pick_top_genes(std::size_t n, const Stat_* statistic, Top_ to
  *
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n` containing the statistics with which to rank genes.
- * @param top Number of top genes to choose, see the `pick_top_genes()` overload for comments.
+ * @param top Number of top genes to choose, see the `pick_top_genes()` overload for more details.
  * @param larger Whether the top genes are defined as those with larger statistics.
  * @param options Further options.
  *
@@ -239,7 +245,7 @@ std::vector<Bool_> pick_top_genes(std::size_t n, const Stat_* statistic, Top_ to
  * All indices are guaranteed to be non-negative and less than `n`.
  */
 template<typename Index_, typename Stat_, typename Top_>
-std::vector<Index_> pick_top_genes_index(Index_ n, const Stat_* statistic, Top_ top, bool larger, const PickTopGenesOptions<Stat_>& options) {
+std::vector<Index_> pick_top_genes_index(const Index_ n, const Stat_* const statistic, const Top_ top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
     std::vector<Index_> output;
     if (larger) {
         internal::pick_top_genes<true>(
