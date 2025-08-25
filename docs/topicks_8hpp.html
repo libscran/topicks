@@ -110,23 +110,26 @@ $(function(){ initResizable(false); });
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &quot;sanisizer/sanisizer.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for topicks.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="topicks_8hpp__incl.png" border="0" usemap="#atopicks_2topicks_8hpp" alt=""/></div>
 <map name="atopicks_2topicks_8hpp" id="atopicks_2topicks_8hpp">
-<area shape="rect" title="Choose top genes for downstream analyses." alt="" coords="151,5,285,31"/>
+<area shape="rect" title="Choose top genes for downstream analyses." alt="" coords="195,5,329,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,63,105"/>
-<area shape="poly" title=" " alt="" coords="188,34,78,76,76,71,186,29"/>
+<area shape="poly" title=" " alt="" coords="224,34,78,79,77,74,223,29"/>
 <area shape="rect" title=" " alt="" coords="86,79,160,105"/>
-<area shape="poly" title=" " alt="" coords="204,34,153,72,150,67,200,29"/>
+<area shape="poly" title=" " alt="" coords="240,34,162,74,159,69,237,29"/>
 <area shape="rect" title=" " alt="" coords="184,79,252,105"/>
-<area shape="poly" title=" " alt="" coords="221,31,221,63,215,63,215,31"/>
+<area shape="poly" title=" " alt="" coords="257,33,236,67,231,64,252,30"/>
 <area shape="rect" title=" " alt="" coords="275,79,340,105"/>
-<area shape="poly" title=" " alt="" coords="235,29,282,67,279,71,231,34"/>
-<area shape="rect" title=" " alt="" coords="364,79,515,105"/>
-<area shape="poly" title=" " alt="" coords="256,29,388,71,387,76,255,34"/>
+<area shape="poly" title=" " alt="" coords="272,30,294,64,289,67,267,33"/>
+<area shape="rect" title=" " alt="" coords="364,79,445,105"/>
+<area shape="poly" title=" " alt="" coords="287,29,368,69,365,74,285,34"/>
+<area shape="rect" title=" " alt="" coords="469,79,620,105"/>
+<area shape="poly" title=" " alt="" coords="311,29,482,72,481,77,309,34"/>
 </map>
 </div>
 </div>
@@ -135,26 +138,26 @@ Include dependency graph for topicks.hpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions&lt; Stat_ &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="#a11c8762c3f623432392ad556fa17c745">pick_top_genes()</a></code>.  <a href="structtopicks_1_1PickTopGenesOptions.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="#a4ea4cd990dc41c02bd9468444223d0c2">pick_top_genes()</a></code>.  <a href="structtopicks_1_1PickTopGenesOptions.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a11c8762c3f623432392ad556fa17c745" id="r_a11c8762c3f623432392ad556fa17c745"><td class="memTemplParams" colspan="2">template&lt;typename Stat_ , typename Top_ , typename Bool_ &gt; </td></tr>
-<tr class="memitem:a11c8762c3f623432392ad556fa17c745"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a11c8762c3f623432392ad556fa17c745">topicks::pick_top_genes</a> (std::size_t n, const Stat_ *statistic, Top_ top, bool larger, Bool_ *output, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
-<tr class="separator:a11c8762c3f623432392ad556fa17c745"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae57428d284301914d408e8b037d5129c" id="r_ae57428d284301914d408e8b037d5129c"><td class="memTemplParams" colspan="2">template&lt;typename Bool_ , typename Stat_ , typename Top_ &gt; </td></tr>
-<tr class="memitem:ae57428d284301914d408e8b037d5129c"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Bool_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae57428d284301914d408e8b037d5129c">topicks::pick_top_genes</a> (std::size_t n, const Stat_ *statistic, Top_ top, bool larger, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
-<tr class="separator:ae57428d284301914d408e8b037d5129c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a112b715c087db9dfc69b46f18b8a9227" id="r_a112b715c087db9dfc69b46f18b8a9227"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Stat_ , typename Top_ &gt; </td></tr>
-<tr class="memitem:a112b715c087db9dfc69b46f18b8a9227"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Index_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a112b715c087db9dfc69b46f18b8a9227">topicks::pick_top_genes_index</a> (Index_ n, const Stat_ *statistic, Top_ top, bool larger, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
-<tr class="separator:a112b715c087db9dfc69b46f18b8a9227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ea4cd990dc41c02bd9468444223d0c2" id="r_a4ea4cd990dc41c02bd9468444223d0c2"><td class="memTemplParams" colspan="2">template&lt;typename Stat_ , typename Top_ , typename Bool_ &gt; </td></tr>
+<tr class="memitem:a4ea4cd990dc41c02bd9468444223d0c2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4ea4cd990dc41c02bd9468444223d0c2">topicks::pick_top_genes</a> (const std::size_t n, const Stat_ *const statistic, const Top_ top, const bool larger, Bool_ *const output, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
+<tr class="separator:a4ea4cd990dc41c02bd9468444223d0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c5d00047210395e71958231f316c4e2" id="r_a7c5d00047210395e71958231f316c4e2"><td class="memTemplParams" colspan="2">template&lt;typename Bool_ , typename Stat_ , typename Top_ &gt; </td></tr>
+<tr class="memitem:a7c5d00047210395e71958231f316c4e2"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Bool_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7c5d00047210395e71958231f316c4e2">topicks::pick_top_genes</a> (const std::size_t n, const Stat_ *const statistic, const Top_ top, const bool larger, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
+<tr class="separator:a7c5d00047210395e71958231f316c4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab06b18dc4daabfee067eb5ba301a9558" id="r_ab06b18dc4daabfee067eb5ba301a9558"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Stat_ , typename Top_ &gt; </td></tr>
+<tr class="memitem:ab06b18dc4daabfee067eb5ba301a9558"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Index_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab06b18dc4daabfee067eb5ba301a9558">topicks::pick_top_genes_index</a> (const Index_ n, const Stat_ *const statistic, const Top_ top, const bool larger, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
+<tr class="separator:ab06b18dc4daabfee067eb5ba301a9558"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Choose top genes for downstream analyses. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a11c8762c3f623432392ad556fa17c745" name="a11c8762c3f623432392ad556fa17c745"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11c8762c3f623432392ad556fa17c745">&#9670;&#160;</a></span>pick_top_genes() <span class="overload">[1/2]</span></h2>
+<a id="a4ea4cd990dc41c02bd9468444223d0c2" name="a4ea4cd990dc41c02bd9468444223d0c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ea4cd990dc41c02bd9468444223d0c2">&#9670;&#160;</a></span>pick_top_genes() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,27 +167,27 @@ template&lt;typename Stat_ , typename Top_ , typename Bool_ &gt; </div>
         <tr>
           <td class="memname">void topicks::pick_top_genes </td>
           <td>(</td>
-          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Stat_ *</td>          <td class="paramname"><span class="paramname"><em>statistic</em></span>, </td>
+          <td class="paramtype">const Stat_ *const</td>          <td class="paramname"><span class="paramname"><em>statistic</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Top_</td>          <td class="paramname"><span class="paramname"><em>top</em></span>, </td>
+          <td class="paramtype">const Top_</td>          <td class="paramname"><span class="paramname"><em>top</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>larger</em></span>, </td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>larger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Bool_ *</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
+          <td class="paramtype">Bool_ *const</td>          <td class="paramname"><span class="paramname"><em>output</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -208,11 +211,11 @@ template&lt;typename Stat_ , typename Top_ , typename Bool_ &gt; </div>
     <tr><td class="paramdir"></td><td class="paramname">top</td><td>Number of top genes to choose. Note that the actual number of chosen genes may be:<ul>
 <li>smaller than <code>top</code>, if the latter is greater than the total number of genes in the dataset.</li>
 <li>smaller than <code>top</code>, if <code>PickTopGenesOptions::bound</code> is set and <code>top</code> is greater than <code>X</code>, where <code>X</code> is the number of genes in the dataset with statistics greater than <code>PickTopGenesOptions::bound</code> (or less than the bound, if <code>PickTopGenesOptions::larger = false</code>).</li>
-<li>larger than <code>top</code>, if <code>PickTopGenesOptions::keep_ties = true</code> and there are multiple ties at the <code>top</code>-th chosen gene. </li>
+<li>larger than <code>top</code>, if <code>PickTopGenesOptions::keep_ties = true</code> and there are tied statistics at the <code>top</code>-th chosen gene. </li>
 </ul>
 </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">larger</td><td>Whether the top genes are defined as those with larger statistics. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">output</td><td>Pointer to an array of length <code>n</code>. On output, this is filled with <code>true</code> if the gene is to be retained and <code>false</code> otherwise. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output</td><td>Pointer to an array of length <code>n</code>. On output, the <code>i</code>-th element will be <code>true</code> if gene <code>i</code> is one of the top genes and <code>false</code> otherwise. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">options</td><td>Further options. </td></tr>
   </table>
   </dd>
@@ -220,8 +223,8 @@ template&lt;typename Stat_ , typename Top_ , typename Bool_ &gt; </div>
 
 </div>
 </div>
-<a id="ae57428d284301914d408e8b037d5129c" name="ae57428d284301914d408e8b037d5129c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae57428d284301914d408e8b037d5129c">&#9670;&#160;</a></span>pick_top_genes() <span class="overload">[2/2]</span></h2>
+<a id="a7c5d00047210395e71958231f316c4e2" name="a7c5d00047210395e71958231f316c4e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c5d00047210395e71958231f316c4e2">&#9670;&#160;</a></span>pick_top_genes() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,22 +234,22 @@ template&lt;typename Bool_ , typename Stat_ , typename Top_ &gt; </div>
         <tr>
           <td class="memname">std::vector&lt; Bool_ &gt; topicks::pick_top_genes </td>
           <td>(</td>
-          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+          <td class="paramtype">const std::size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Stat_ *</td>          <td class="paramname"><span class="paramname"><em>statistic</em></span>, </td>
+          <td class="paramtype">const Stat_ *const</td>          <td class="paramname"><span class="paramname"><em>statistic</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Top_</td>          <td class="paramname"><span class="paramname"><em>top</em></span>, </td>
+          <td class="paramtype">const Top_</td>          <td class="paramname"><span class="paramname"><em>top</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>larger</em></span>, </td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>larger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -267,7 +270,7 @@ template&lt;typename Bool_ , typename Stat_ , typename Top_ &gt; </div>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">n</td><td>Number of genes. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">statistic</td><td>Pointer to an array of length <code>n</code>, containing the statistics with which to rank genes. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">top</td><td>Number of top genes to choose, see the <code>pick_top_genes()</code> overload for comments. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">top</td><td>Number of top genes to choose, see the <code>pick_top_genes()</code> overload for more details. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">larger</td><td>Whether the top genes are defined as those with larger statistics. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">options</td><td>Further options.</td></tr>
   </table>
@@ -277,8 +280,8 @@ template&lt;typename Bool_ , typename Stat_ , typename Top_ &gt; </div>
 
 </div>
 </div>
-<a id="a112b715c087db9dfc69b46f18b8a9227" name="a112b715c087db9dfc69b46f18b8a9227"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a112b715c087db9dfc69b46f18b8a9227">&#9670;&#160;</a></span>pick_top_genes_index()</h2>
+<a id="ab06b18dc4daabfee067eb5ba301a9558" name="ab06b18dc4daabfee067eb5ba301a9558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab06b18dc4daabfee067eb5ba301a9558">&#9670;&#160;</a></span>pick_top_genes_index()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,22 +291,22 @@ template&lt;typename Index_ , typename Stat_ , typename Top_ &gt; </div>
         <tr>
           <td class="memname">std::vector&lt; Index_ &gt; topicks::pick_top_genes_index </td>
           <td>(</td>
-          <td class="paramtype">Index_</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
+          <td class="paramtype">const Index_</td>          <td class="paramname"><span class="paramname"><em>n</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Stat_ *</td>          <td class="paramname"><span class="paramname"><em>statistic</em></span>, </td>
+          <td class="paramtype">const Stat_ *const</td>          <td class="paramname"><span class="paramname"><em>statistic</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Top_</td>          <td class="paramname"><span class="paramname"><em>top</em></span>, </td>
+          <td class="paramtype">const Top_</td>          <td class="paramname"><span class="paramname"><em>top</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>larger</em></span>, </td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>larger</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -324,7 +327,7 @@ template&lt;typename Index_ , typename Stat_ , typename Top_ &gt; </div>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">n</td><td>Number of genes. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">statistic</td><td>Pointer to an array of length <code>n</code> containing the statistics with which to rank genes. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">top</td><td>Number of top genes to choose, see the <code>pick_top_genes()</code> overload for comments. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">top</td><td>Number of top genes to choose, see the <code>pick_top_genes()</code> overload for more details. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">larger</td><td>Whether the top genes are defined as those with larger statistics. </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">options</td><td>Further options.</td></tr>
   </table>
