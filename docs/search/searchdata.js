@@ -1,10 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "bgkpt",
+  0: "bgkopt",
   1: "p",
   2: "t",
   3: "p",
-  4: "bk",
+  4: "bko",
   5: "gpt"
 };
 

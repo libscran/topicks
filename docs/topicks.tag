@@ -19,6 +19,13 @@
     </member>
     <member kind="variable">
       <type>bool</type>
+      <name>open_bound</name>
+      <anchorfile>structtopicks_1_1PickTopGenesOptions.html</anchorfile>
+      <anchor>af66b687b1bc89dee122ab85a27afdf3f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>bool</type>
       <name>keep_ties</name>
       <anchorfile>structtopicks_1_1PickTopGenesOptions.html</anchorfile>
       <anchor>a2db78cb727b9c6e9c687127ee5bbbb69</anchor>

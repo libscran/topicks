@@ -113,6 +113,8 @@ $(function(){ initResizable(false); });
 Public Attributes</h2></td></tr>
 <tr class="memitem:afce1d913773d4cca49ccc07a7f952f88" id="r_afce1d913773d4cca49ccc07a7f952f88"><td class="memItemLeft" align="right" valign="top">std::optional&lt; Stat_ &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afce1d913773d4cca49ccc07a7f952f88">bound</a></td></tr>
 <tr class="separator:afce1d913773d4cca49ccc07a7f952f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66b687b1bc89dee122ab85a27afdf3f" id="r_af66b687b1bc89dee122ab85a27afdf3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af66b687b1bc89dee122ab85a27afdf3f">open_bound</a> = true</td></tr>
+<tr class="separator:af66b687b1bc89dee122ab85a27afdf3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db78cb727b9c6e9c687127ee5bbbb69" id="r_a2db78cb727b9c6e9c687127ee5bbbb69"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2db78cb727b9c6e9c687127ee5bbbb69">keep_ties</a> = true</td></tr>
 <tr class="separator:a2db78cb727b9c6e9c687127ee5bbbb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -139,7 +141,31 @@ template&lt;typename Stat_ &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>A absolute bound for the statistic, to be considered when choosing the top genes. A gene with a lower (if <code>PickTopGenesOptions::larger = false</code>) or higher statistic (otherwise) will not be picked even if it is among the top <code>top</code> genes. If unset, no absolute bound is applied to the statistic. </p>
+<p>A absolute bound for the statistic, to be considered when choosing the top genes. A gene will not be picked, even if it is among the top <code>top</code> genes, if its statistic is:</p>
+<ul>
+<li>equal to or lower than the bound, when <code>larger = true</code> and <code><a class="el" href="#af66b687b1bc89dee122ab85a27afdf3f">PickTopGenesOptions::open_bound</a> = true</code>.</li>
+<li>lower than the bound, when <code>larger = true</code> and <code><a class="el" href="#af66b687b1bc89dee122ab85a27afdf3f">PickTopGenesOptions::open_bound</a> = false</code>.</li>
+<li>equal to or greater than the bound, when <code>larger = false</code> and <code><a class="el" href="#af66b687b1bc89dee122ab85a27afdf3f">PickTopGenesOptions::open_bound</a> = true</code>.</li>
+<li>greater than the bound, when <code>larger = false</code> and <code><a class="el" href="#af66b687b1bc89dee122ab85a27afdf3f">PickTopGenesOptions::open_bound</a> = false</code>.</li>
+</ul>
+<p>If unset, no absolute bound is applied to the statistic. </p>
+
+</div>
+</div>
+<a id="af66b687b1bc89dee122ab85a27afdf3f" name="af66b687b1bc89dee122ab85a27afdf3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66b687b1bc89dee122ab85a27afdf3f">&#9670;&#160;</a></span>open_bound</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Stat_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a>&lt; Stat_ &gt;::open_bound = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether <code><a class="el" href="#afce1d913773d4cca49ccc07a7f952f88">PickTopGenesOptions::bound</a></code> is an open interval, i.e., genes with statistics equal to the bound will not be picked. Only relevant if <code><a class="el" href="#afce1d913773d4cca49ccc07a7f952f88">PickTopGenesOptions::bound</a></code> is set. </p>
 
 </div>
 </div>
