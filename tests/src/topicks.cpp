@@ -66,10 +66,32 @@ TEST_P(TopicksTest, Larger) {
     auto ioutput2 = topicks::pick_top_genes_index<int>(ngenes, x.data(), ntop, true, opt); // check for different integer types.
     EXPECT_EQ(std::vector<size_t>(ioutput2.begin(), ioutput2.end()), ioutput);
 
-    opt.keep_ties = false; // this should have no effect, assuming we don't have tied values in 'x'.
-    auto output_nt = topicks::pick_top_genes<char>(ngenes, x.data(), ntop, true, opt);
-    if (std::unordered_set(x.begin(), x.end()).size() == x.size()) {
-        EXPECT_EQ(output, output_nt);
+    // We probably won't have tied values in 'x', so keeping ties or not shouldn't have an effect.
+    {
+        auto opt2 = opt;
+        opt2.keep_ties = false;
+        auto output_nt = topicks::pick_top_genes<char>(ngenes, x.data(), ntop, true, opt2);
+        if (std::unordered_set(x.begin(), x.end()).size() == x.size()) {
+            EXPECT_EQ(output, output_nt);
+        }
+    }
+
+    // Also works with a closed bound.
+    if (bound.first) {
+        auto opt2 = opt;
+        opt2.open_bound = false;
+        auto output_closed = topicks::pick_top_genes<char>(ngenes, x.data(), ntop, true, opt2);
+
+        double min_has = 100, max_lost = -100;
+        for (size_t o = 0; o < ngenes; ++o) {
+            if (output[o]) {
+                min_has = std::min(min_has, x[o]);
+            } else {
+                max_lost = std::max(max_lost, x[o]);
+            }
+        }
+        EXPECT_GT(min_has, max_lost);
+        EXPECT_GE(min_has, bound.second);
     }
 }
 
@@ -240,4 +262,45 @@ TEST(Topicks, Extremes) {
 
     auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 0, true, opt);
     EXPECT_TRUE(ioutput.empty());
+}
+
+TEST(Topicks, ClosedBound) {
+    // Checking that the closed bound actually has an effect.
+    std::vector<double> x{ 1.1, 2.2, 3.3, 0.0, 4.4 };
+
+    topicks::PickTopGenesOptions<double> opt;
+    opt.bound = 2.2;
+
+    // Running this as a control.
+    {
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 10, true, opt);
+        std::vector<size_t> expected { 2, 4 };
+        EXPECT_EQ(ioutput, expected);
+    }
+
+    opt.open_bound = false;
+    {
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 10, true, opt);
+        std::vector<size_t> expected { 1, 2, 4 };
+        EXPECT_EQ(ioutput, expected);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 10, true, opt);
+        compare_bool_with_index(output, ioutput);
+    }
+
+    {
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 4, true, opt);
+        std::vector<size_t> expected { 1, 2, 4 };
+        EXPECT_EQ(ioutput, expected);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 4, true, opt);
+        compare_bool_with_index(output, ioutput);
+    }
+
+    opt.keep_ties = false;
+    {
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 4, true, opt);
+        std::vector<size_t> expected { 1, 2, 4 };
+        EXPECT_EQ(ioutput, expected);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 4, true, opt);
+        compare_bool_with_index(output, ioutput);
+    }
 }

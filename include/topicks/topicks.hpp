@@ -24,10 +24,22 @@ template<typename Stat_>
 struct PickTopGenesOptions {
     /**
      * A absolute bound for the statistic, to be considered when choosing the top genes.
-     * A gene with a lower (if `PickTopGenesOptions::larger = false`) or higher statistic (otherwise) will not be picked even if it is among the top `top` genes.
+     * A gene will not be picked, even if it is among the top `top` genes, if its statistic is:
+     *
+     * - equal to or lower than the bound, when `larger = true` and `PickTopGenesOptions::open_bound = true`.
+     * - lower than the bound, when `larger = true` and `PickTopGenesOptions::open_bound = false`.
+     * - equal to or greater than the bound, when `larger = false` and `PickTopGenesOptions::open_bound = true`.
+     * - greater than the bound, when `larger = false` and `PickTopGenesOptions::open_bound = false`.
+     *
      * If unset, no absolute bound is applied to the statistic.
      */
     std::optional<Stat_> bound;
+
+    /**
+     * Whether `PickTopGenesOptions::bound` is an open interval, i.e., genes with statistics equal to the bound will not be picked. 
+     * Only relevant if `PickTopGenesOptions::bound` is set.
+     */
+    bool open_bound = true;
 
     /**
      * Whether to keep all genes with statistics that are tied with the `PickTopGenesOptions::top`-th gene.
@@ -46,8 +58,38 @@ std::remove_cv_t<std::remove_reference_t<Input_> > I(Input_ x) {
     return x;
 }
 
-template<bool keep_index_, typename Index_, typename Stat_, typename Top_, class Output_, class Cmp_, class CmpEqual_>
-void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Output_& output, const Cmp_ cmp, const CmpEqual_ cmpeq, const PickTopGenesOptions<Stat_>& options) {
+template<bool keep_index_, typename Index_, typename Stat_, class Output_, class Cmp_>
+void filter_genes_by_threshold(const Index_ n, const Stat_* statistic, Output_& output, const Cmp_ cmp, const Stat_ threshold) {
+    for (Index_ i = 0; i < n; ++i) {
+        const bool ok = cmp(statistic[i], threshold);
+        if constexpr(keep_index_) {
+            if (ok) {
+                output.push_back(i);
+            }
+        } else {
+            output[i] = ok;
+        }
+    }
+}
+
+template<bool keep_index_, typename Index_, typename Stat_, class Output_, class Cmp_>
+void select_top_genes_by_threshold(const Index_ top, const Stat_* statistic, Output_& output, const Cmp_ cmp, const Stat_ threshold, const std::vector<Index_>& semi_sorted) {
+    Index_ counter = top;
+    while (counter > 0) {
+        --counter;
+        const auto pos = semi_sorted[counter];
+        if (cmp(statistic[pos], threshold)) {
+            if constexpr(keep_index_) {
+                output.push_back(pos);
+            } else {
+                output[pos] = true;
+            }
+        }
+    }
+}
+
+template<bool keep_index_, typename Index_, typename Stat_, typename Top_, class Output_, class CmpNotEqual_, class CmpEqual_>
+void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Output_& output, const CmpNotEqual_ cmpne, const CmpEqual_ cmpeq, const PickTopGenesOptions<Stat_>& options) {
     if (top == 0) {
         if constexpr(keep_index_) {
             ; // no-op, we assume it's already empty.
@@ -59,16 +101,10 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
 
     if (sanisizer::is_greater_than(top, n)) {
         if (options.bound.has_value()) {
-            const auto bound = *(options.bound);
-            for (Index_ i = 0; i < n; ++i) {
-                const bool ok = cmp(statistic[i], bound);
-                if constexpr(keep_index_) {
-                    if (ok) {
-                        output.push_back(i);
-                    }
-                } else {
-                    output[i] = ok;
-                }
+            if (options.open_bound) {
+                filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpne, *(options.bound));
+            } else {
+                filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpeq, *(options.bound));
             }
         } else {
             if constexpr(keep_index_) {
@@ -89,36 +125,29 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
         if (L == R) {
             return l < r; // always favor the earlier index for a stable sort, even if larger = false.
         } else {
-            return cmp(L, R);
+            return cmpne(L, R);
         }
     });
     const Stat_ threshold = statistic[*cMid];
 
     if (options.keep_ties) {
-        if (options.bound.has_value() && !cmp(threshold, *(options.bound))) {
+        if (options.bound.has_value()) {
             const auto bound = *(options.bound);
-            for (Index_ i = 0; i < n; ++i) {
-                const bool ok = cmp(statistic[i], bound);
-                if constexpr(keep_index_) {
-                    if (ok) {
-                        output.push_back(i);
-                    }
-                } else {
-                    output[i] = ok;
+
+            if (options.open_bound) {
+                if (!cmpne(threshold, bound)) {
+                    filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpne, *(options.bound));
+                    return;
                 }
-            }
-        } else {
-            for (Index_ i = 0; i < n; ++i) {
-                const bool ok = cmpeq(statistic[i], threshold);
-                if constexpr(keep_index_) {
-                    if (ok) {
-                        output.push_back(i);
-                    }
-                } else {
-                    output[i] = ok;
+            } else {
+                if (!cmpeq(threshold, bound)) {
+                    filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpeq, *(options.bound));
+                    return;
                 }
             }
         }
+
+        filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpeq, threshold);
         return;
     }
 
@@ -129,18 +158,11 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
     }
 
     if (options.bound.has_value()) {
-        const auto bound = *(options.bound);
-        Index_ counter = top; // cast is known safe as top <= n.
-        while (counter > 0) {
-            --counter;
-            auto pos = semi_sorted[counter];
-            if (cmp(statistic[pos], bound)) {
-                if constexpr(keep_index_) {
-                    output.push_back(pos);
-                } else {
-                    output[pos] = true;
-                }
-            }
+        // cast of 'top' to Index_ is known safe as top <= n by this point.
+        if (options.open_bound) {
+            select_top_genes_by_threshold<keep_index_>(static_cast<Index_>(top), statistic, output, cmpne, *(options.bound), semi_sorted);
+        } else {
+            select_top_genes_by_threshold<keep_index_>(static_cast<Index_>(top), statistic, output, cmpeq, *(options.bound), semi_sorted);
         }
     } else {
         if constexpr(keep_index_) {
