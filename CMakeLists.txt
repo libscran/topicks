@@ -22,7 +22,7 @@ option(TOPICKER_FETCH_EXTERN "Automatically fetch topicks's external dependencie
 if(TOPICKER_FETCH_EXTERN)
     add_subdirectory(extern)
 else()
-    find_package(ltla_sanisizer 0.1.0 CONFIG REQUIRED)
+    find_package(ltla_sanisizer 0.1.2 CONFIG REQUIRED)
 endif()
 
 target_link_libraries(topicks INTERFACE ltla::sanisizer)

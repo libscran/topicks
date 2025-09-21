@@ -99,7 +99,7 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
         return;
     }
 
-    if (sanisizer::is_greater_than(top, n)) {
+    if (sanisizer::is_greater_than_or_equal(top, n)) {
         if (options.bound.has_value()) {
             if (options.open_bound) {
                 filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpne, *(options.bound));
@@ -108,7 +108,7 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
             }
         } else {
             if constexpr(keep_index_) {
-                output.resize(sanisizer::cast<decltype(I(output.size()))>(n));
+                sanisizer::resize(output, n);
                 std::iota(output.begin(), output.end(), static_cast<Index_>(0));
             } else {
                 std::fill_n(output, n, true);
