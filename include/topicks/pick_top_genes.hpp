@@ -42,8 +42,8 @@ struct PickTopGenesOptions {
     bool open_bound = true;
 
     /**
-     * Whether to keep all genes with statistics that are tied with the `PickTopGenesOptions::top`-th gene.
-     * If `false`, ties are arbitrarily broken but the number of retained genes will not be greater than `PickTopGenesOptions::top`.
+     * Whether to keep all genes with statistics that are tied with the `top`-th gene.
+     * If `false`, ties are arbitrarily broken but the number of retained genes will not be greater than `top`.
      */
     bool keep_ties = true;
 };
@@ -191,15 +191,10 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Index_ top, Ou
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n`, containing the statistics with which to rank genes.
  * @param top Number of top genes to choose.
- * Note that the actual number of chosen genes may be: 
- * - smaller than `top`, if the latter is greater than the total number of genes in the dataset. 
- * - smaller than `top`, if `PickTopGenesOptions::bound` is set and `top` is greater than `X`,
- *   where `X` is the number of genes in the dataset with statistics greater than `PickTopGenesOptions::bound`
- *   (or less than the bound, if `PickTopGenesOptions::larger = false`).
- * - larger than `top`, if `PickTopGenesOptions::keep_ties = true` and there are tied statistics at the `top`-th chosen gene.
  * @param larger Whether the top genes are defined as those with larger statistics.
  * @param[out] output Pointer to an array of length `n`. 
  * On output, the `i`-th element will be `true` if gene `i` is one of the top genes and `false` otherwise.
+ * Note that the actual number of chosen genes may be smaller/larger than `top`, depending on `n` and `options`.
  * @param options Further options.
  */
 template<typename Stat_, typename Bool_>
@@ -233,11 +228,12 @@ void pick_top_genes(const std::size_t n, const Stat_* const statistic, const std
  *
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n`, containing the statistics with which to rank genes.
- * @param top Number of top genes to choose, see the `pick_top_genes()` overload for more details.
+ * @param top Number of top genes to choose.
  * @param larger Whether the top genes are defined as those with larger statistics.
  * @param options Further options.
  *
  * @return A vector of booleans of length `n`, indicating whether each gene is to be retained.
+ * Note that the actual number of chosen genes may be smaller/larger than `top`, depending on `n` and `options`.
  */
 template<typename Bool_, typename Stat_>
 std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statistic, const std::size_t top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
@@ -256,12 +252,13 @@ std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statis
  *
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n` containing the statistics with which to rank genes.
- * @param top Number of top genes to choose, see the `pick_top_genes()` overload for more details.
+ * @param top Number of top genes to choose.
  * @param larger Whether the top genes are defined as those with larger statistics.
  * @param options Further options.
  *
  * @return Vector of sorted and unique indices for the chosen genes.
  * All indices are guaranteed to be non-negative and less than `n`.
+ * Note that the actual number of chosen genes may be smaller/larger than `top`, depending on `n` and `options`.
  */
 template<typename Index_, typename Stat_>
 std::vector<Index_> pick_top_genes_index(const Index_ n, const Stat_* const statistic, const Index_ top, const bool larger, const PickTopGenesOptions<Stat_>& options) {

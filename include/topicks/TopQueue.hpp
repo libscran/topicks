@@ -176,11 +176,7 @@ private:
 public:
     /**
      * @param top Number of top genes to choose.
-     * Note that the actual number of chosen genes may be: 
-     * - smaller than `top`, if the latter is greater than the total number of genes in the dataset. 
-     * - smaller than `top`, if `TopQueueOptions::bound` is set and `top` is greater than `X`,
-     *   where `X` is the number of genes in the dataset with statistics greater than (if `larger = true`) or  less than (otherwise) `TopQueueOptions::bound`.
-     * - larger than `top`, if `TopQueueOptions::keep_ties = true` and there are tied statistics at the `top`-th chosen gene.
+     * Note that the actual number of chosen genes may be smaller/larger than `top`, depending on the number of genes and `options`.
      * @param larger Whether the top genes are defined as those with larger statistics.
      * @param options Further options.
      */
