@@ -92,7 +92,7 @@ $(function(){ initResizable(false); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>topicks</b></li><li class="navelem"><a class="el" href="classtopicks_1_1TopQueue.html">TopQueue</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacetopicks.html">topicks</a></li><li class="navelem"><a class="el" href="classtopicks_1_1TopQueue.html">TopQueue</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
@@ -136,7 +136,7 @@ class topicks::TopQueue&lt; Stat_, Index_ &gt;</div><p>Priority queue for retain
   </table>
   </dd>
 </dl>
-<p>The <code><a class="el" href="classtopicks_1_1TopQueue.html" title="Priority queue for retaining top genes.">TopQueue</a></code> class retains the indices of the top genes, analogous to <code><a class="el" href="topicks_8hpp.html#ab06b18dc4daabfee067eb5ba301a9558">pick_top_genes_index()</a></code>. This is useful if the user does not want to store an array of statistics for all genes; instead, the statistics can be computed for each gene and added to this queue to reduce memory usage. </p>
+<p>The <code><a class="el" href="classtopicks_1_1TopQueue.html" title="Priority queue for retaining top genes.">TopQueue</a></code> class retains the indices of the top genes, analogous to <code><a class="el" href="namespacetopicks.html#ae75199c927619278d5871bb73096a877">pick_top_genes_index()</a></code>. This is useful if the user does not want to store an array of statistics for all genes; instead, the statistics can be computed for each gene and added to this queue to reduce memory usage. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3eb293431b5b55725148d1f24443a90f" name="a3eb293431b5b55725148d1f24443a90f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3eb293431b5b55725148d1f24443a90f">&#9670;&#160;</a></span>TopQueue()</h2>
@@ -173,12 +173,7 @@ template&lt;typename Stat_ , typename Index_ &gt; </div>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">top</td><td>Number of top genes to choose. Note that the actual number of chosen genes may be:<ul>
-<li>smaller than <code>top</code>, if the latter is greater than the total number of genes in the dataset.</li>
-<li>smaller than <code>top</code>, if <code><a class="el" href="structtopicks_1_1TopQueueOptions.html#a6a382963aafef610e30c921c0705c4e2">TopQueueOptions::bound</a></code> is set and <code>top</code> is greater than <code>X</code>, where <code>X</code> is the number of genes in the dataset with statistics greater than (if <code>larger = true</code>) or less than (otherwise) <code><a class="el" href="structtopicks_1_1TopQueueOptions.html#a6a382963aafef610e30c921c0705c4e2">TopQueueOptions::bound</a></code>.</li>
-<li>larger than <code>top</code>, if <code><a class="el" href="structtopicks_1_1TopQueueOptions.html#aa40aaef482e1df7862067b5a71b58a9f">TopQueueOptions::keep_ties</a> = true</code> and there are tied statistics at the <code>top</code>-th chosen gene. </li>
-</ul>
-</td></tr>
+    <tr><td class="paramname">top</td><td>Number of top genes to choose. Note that the actual number of chosen genes may be smaller/larger than <code>top</code>, depending on the number of genes and <code>options</code>. </td></tr>
     <tr><td class="paramname">larger</td><td>Whether the top genes are defined as those with larger statistics. </td></tr>
     <tr><td class="paramname">options</td><td>Further options. </td></tr>
   </table>

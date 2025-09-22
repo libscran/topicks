@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>topicks: topicks/TopQueue.hpp File Reference</title>
+<title>topicks: topicks/pick_top_genes.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -99,53 +99,57 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
-  <div class="headertitle"><div class="title">TopQueue.hpp File Reference</div></div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">pick_top_genes.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Priority queue for the top genes.  
+<p>Pick top genes from an array of statistics.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &quot;sanisizer/sanisizer.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for TopQueue.hpp:</div>
+Include dependency graph for pick_top_genes.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="TopQueue_8hpp__incl.png" border="0" usemap="#atopicks_2TopQueue_8hpp" alt=""/></div>
-<map name="atopicks_2TopQueue_8hpp" id="atopicks_2TopQueue_8hpp">
-<area shape="rect" title="Priority queue for the top genes." alt="" coords="94,5,246,31"/>
+<div class="center"><img src="pick__top__genes_8hpp__incl.png" border="0" usemap="#atopicks_2pick__top__genes_8hpp" alt=""/></div>
+<map name="atopicks_2pick__top__genes_8hpp" id="atopicks_2pick__top__genes_8hpp">
+<area shape="rect" title="Pick top genes from an array of statistics." alt="" coords="171,5,353,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,63,105"/>
-<area shape="poly" title=" " alt="" coords="148,34,72,74,69,69,146,29"/>
+<area shape="poly" title=" " alt="" coords="224,34,78,79,77,74,223,29"/>
 <area shape="rect" title=" " alt="" coords="86,79,160,105"/>
-<area shape="poly" title=" " alt="" coords="165,33,142,67,137,64,160,30"/>
-<area shape="rect" title=" " alt="" coords="185,79,251,105"/>
-<area shape="poly" title=" " alt="" coords="180,30,204,64,199,67,176,33"/>
-<area shape="rect" title=" " alt="" coords="276,79,427,105"/>
-<area shape="poly" title=" " alt="" coords="202,29,307,70,305,75,200,34"/>
+<area shape="poly" title=" " alt="" coords="240,34,162,74,159,69,237,29"/>
+<area shape="rect" title=" " alt="" coords="184,79,252,105"/>
+<area shape="poly" title=" " alt="" coords="257,33,236,67,231,64,252,30"/>
+<area shape="rect" title=" " alt="" coords="275,79,340,105"/>
+<area shape="poly" title=" " alt="" coords="272,30,294,64,289,67,267,33"/>
+<area shape="rect" title=" " alt="" coords="364,79,445,105"/>
+<area shape="poly" title=" " alt="" coords="287,29,368,69,365,74,285,34"/>
+<area shape="rect" title=" " alt="" coords="469,79,620,105"/>
+<area shape="poly" title=" " alt="" coords="311,29,482,72,481,77,309,34"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="TopQueue_8hpp__dep__incl.png" border="0" usemap="#atopicks_2TopQueue_8hppdep" alt=""/></div>
-<map name="atopicks_2TopQueue_8hppdep" id="atopicks_2TopQueue_8hppdep">
-<area shape="rect" title="Priority queue for the top genes." alt="" coords="5,5,157,31"/>
-<area shape="rect" href="topicks_8hpp.html" title="Umbrella header for the topicks library." alt="" coords="14,79,148,105"/>
-<area shape="poly" title=" " alt="" coords="84,46,84,79,78,79,78,46"/>
+<div class="center"><img src="pick__top__genes_8hpp__dep__incl.png" border="0" usemap="#atopicks_2pick__top__genes_8hppdep" alt=""/></div>
+<map name="atopicks_2pick__top__genes_8hppdep" id="atopicks_2pick__top__genes_8hppdep">
+<area shape="rect" title="Pick top genes from an array of statistics." alt="" coords="5,5,188,31"/>
+<area shape="rect" href="topicks_8hpp.html" title="Umbrella header for the topicks library." alt="" coords="30,79,163,105"/>
+<area shape="poly" title=" " alt="" coords="99,46,99,79,94,79,94,46"/>
 </map>
 </div>
 </div>
-<p><a href="TopQueue_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="pick__top__genes_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtopicks_1_1TopQueueOptions.html">topicks::TopQueueOptions&lt; Stat_ &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="classtopicks_1_1TopQueue.html" title="Priority queue for retaining top genes.">TopQueue</a></code>.  <a href="structtopicks_1_1TopQueueOptions.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtopicks_1_1TopQueue.html">topicks::TopQueue&lt; Stat_, Index_ &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Priority queue for retaining top genes.  <a href="classtopicks_1_1TopQueue.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions&lt; Stat_ &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for <code><a class="el" href="namespacetopicks.html#afb96918e66418b1d67caca308c3acc98">pick_top_genes()</a></code>.  <a href="structtopicks_1_1PickTopGenesOptions.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -153,9 +157,21 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetopicks.html">topicks</a></td></tr>
 <tr class="memdesc:namespacetopicks"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pick top genes from their statistics. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:afb96918e66418b1d67caca308c3acc98" id="r_afb96918e66418b1d67caca308c3acc98"><td class="memTemplParams" colspan="2">template&lt;typename Stat_ , typename Bool_ &gt; </td></tr>
+<tr class="memitem:afb96918e66418b1d67caca308c3acc98"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacetopicks.html#afb96918e66418b1d67caca308c3acc98">topicks::pick_top_genes</a> (const std::size_t n, const Stat_ *const statistic, const std::size_t top, const bool larger, Bool_ *const output, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
+<tr class="separator:afb96918e66418b1d67caca308c3acc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc0dc3243590fe8190e5012c4d01ed9" id="r_afdc0dc3243590fe8190e5012c4d01ed9"><td class="memTemplParams" colspan="2">template&lt;typename Bool_ , typename Stat_ &gt; </td></tr>
+<tr class="memitem:afdc0dc3243590fe8190e5012c4d01ed9"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Bool_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacetopicks.html#afdc0dc3243590fe8190e5012c4d01ed9">topicks::pick_top_genes</a> (const std::size_t n, const Stat_ *const statistic, const std::size_t top, const bool larger, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
+<tr class="separator:afdc0dc3243590fe8190e5012c4d01ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae75199c927619278d5871bb73096a877" id="r_ae75199c927619278d5871bb73096a877"><td class="memTemplParams" colspan="2">template&lt;typename Index_ , typename Stat_ &gt; </td></tr>
+<tr class="memitem:ae75199c927619278d5871bb73096a877"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; Index_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacetopicks.html#ae75199c927619278d5871bb73096a877">topicks::pick_top_genes_index</a> (const Index_ n, const Stat_ *const statistic, const Index_ top, const bool larger, const <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">PickTopGenesOptions</a>&lt; Stat_ &gt; &amp;options)</td></tr>
+<tr class="separator:ae75199c927619278d5871bb73096a877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Priority queue for the top genes. </p>
+<div class="textblock"><p>Pick top genes from an array of statistics. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -109,7 +109,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;sanisizer/sanisizer.hpp&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span>topicks {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacetopicks.html">topicks</a> {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Stat_&gt;</div>
 <div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
@@ -242,85 +242,86 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    }</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a3eb293431b5b55725148d1f24443a90f">  187</a></span>    <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb293431b5b55725148d1f24443a90f">TopQueue</a>(<span class="keyword">const</span> Index_ <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">top</a>, <span class="keyword">const</span> <span class="keywordtype">bool</span> larger, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicks_1_1TopQueueOptions.html">TopQueueOptions&lt;Stat_&gt;</a>&amp; options) : </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        my_top(<a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">top</a>),</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        my_larger(larger),</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        my_bound(options.bound),</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        my_open_bound(options.open_bound),</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        my_keep_ties(options.keep_ties)</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    {}</div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a3eb293431b5b55725148d1f24443a90f">  183</a></span>    <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb293431b5b55725148d1f24443a90f">TopQueue</a>(<span class="keyword">const</span> Index_ <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">top</a>, <span class="keyword">const</span> <span class="keywordtype">bool</span> larger, <span class="keyword">const</span> <a class="code hl_struct" href="structtopicks_1_1TopQueueOptions.html">TopQueueOptions&lt;Stat_&gt;</a>&amp; options) : </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        my_top(<a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">top</a>),</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        my_larger(larger),</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        my_bound(options.bound),</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        my_open_bound(options.open_bound),</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        my_keep_ties(options.keep_ties)</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    {}</div>
 </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="foldopen" id="foldopen00199" data-start="{" data-end="}">
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">  199</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">push</a>(std::pair&lt;Stat_, Index_&gt; gene) {</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        <span class="keywordflow">if</span> (my_larger) {</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            push_internal(</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                std::move(gene), </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                SortGreater(),</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                [](<span class="keyword">const</span> Stat_ existing, <span class="keyword">const</span> Stat_ latest) -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> existing &gt; latest; }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            );</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            push_internal(</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                std::move(gene),</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                SortLess(),</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                [](<span class="keyword">const</span> Stat_ existing, <span class="keyword">const</span> Stat_ latest) -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> existing &lt; latest; }</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            );</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        }</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="foldopen" id="foldopen00195" data-start="{" data-end="}">
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">  195</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">push</a>(std::pair&lt;Stat_, Index_&gt; gene) {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> (my_larger) {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            push_internal(</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                std::move(gene), </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                SortGreater(),</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                [](<span class="keyword">const</span> Stat_ existing, <span class="keyword">const</span> Stat_ latest) -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> existing &gt; latest; }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            );</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            push_internal(</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                std::move(gene),</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                SortLess(),</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                [](<span class="keyword">const</span> Stat_ existing, <span class="keyword">const</span> Stat_ latest) -&gt; <span class="keywordtype">bool</span> { <span class="keywordflow">return</span> existing &lt; latest; }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            );</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        }</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    }</div>
 </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="foldopen" id="foldopen00221" data-start="{" data-end="}">
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035">  221</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035">emplace</a>(Stat_ statistic, Index_ index) {</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">push</a>({ statistic, index });</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    }</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="foldopen" id="foldopen00217" data-start="{" data-end="}">
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035">  217</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035">emplace</a>(Stat_ statistic, Index_ index) {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">push</a>({ statistic, index });</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    }</div>
 </div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="foldopen" id="foldopen00229" data-start="{" data-end="}">
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">  229</a></span>    Index_ <a class="code hl_function" href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">size</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordflow">return</span> my_queue.size() + my_ties.size();</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    }</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="foldopen" id="foldopen00225" data-start="{" data-end="}">
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">  225</a></span>    Index_ <a class="code hl_function" href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">size</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">return</span> my_queue.size() + my_ties.size();</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
 </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="foldopen" id="foldopen00236" data-start="{" data-end="}">
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe">  236</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe">empty</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">size</a>() == 0;</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="foldopen" id="foldopen00232" data-start="{" data-end="}">
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe">  232</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe">empty</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">size</a>() == 0;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    }</div>
 </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
-<div class="foldopen" id="foldopen00246" data-start="{" data-end="}">
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">  246</a></span>    <span class="keyword">const</span> std::pair&lt;Stat_, Index_&gt;&amp; <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">top</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">if</span> (my_ties.size()) {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            <span class="keywordflow">return</span> my_ties.front();</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            <span class="keywordflow">return</span> my_queue.front();</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        }</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    }</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="foldopen" id="foldopen00242" data-start="{" data-end="}">
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">  242</a></span>    <span class="keyword">const</span> std::pair&lt;Stat_, Index_&gt;&amp; <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">top</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordflow">if</span> (my_ties.size()) {</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keywordflow">return</span> my_ties.front();</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            <span class="keywordflow">return</span> my_queue.front();</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        }</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    }</div>
 </div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="foldopen" id="foldopen00258" data-start="{" data-end="}">
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a36c1af55c44cbc3f5f2cbdc001435b2c">  258</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a36c1af55c44cbc3f5f2cbdc001435b2c">pop</a>() {</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="keywordflow">if</span> (my_larger) {</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            pop_internal(SortGreater());</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            pop_internal(SortLess());</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        }</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    }</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="foldopen" id="foldopen00254" data-start="{" data-end="}">
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classtopicks_1_1TopQueue.html#a36c1af55c44cbc3f5f2cbdc001435b2c">  254</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classtopicks_1_1TopQueue.html#a36c1af55c44cbc3f5f2cbdc001435b2c">pop</a>() {</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">if</span> (my_larger) {</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            pop_internal(SortGreater());</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            pop_internal(SortLess());</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        }</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    }</div>
 </div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>};</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>};</div>
 </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>}</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>}</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclasstopicks_1_1TopQueue_html"><div class="ttname"><a href="classtopicks_1_1TopQueue.html">topicks::TopQueue</a></div><div class="ttdoc">Priority queue for retaining top genes.</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:59</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a26e76a49e4e36fb1fe734bce3222e618"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">topicks::TopQueue::push</a></div><div class="ttdeci">void push(std::pair&lt; Stat_, Index_ &gt; gene)</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:199</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a36c1af55c44cbc3f5f2cbdc001435b2c"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a36c1af55c44cbc3f5f2cbdc001435b2c">topicks::TopQueue::pop</a></div><div class="ttdeci">void pop()</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:258</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a396044984a5dde2833fb7a1ec0048035"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035">topicks::TopQueue::emplace</a></div><div class="ttdeci">void emplace(Stat_ statistic, Index_ index)</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:221</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a3eb0f3afc1a9542736255b808015fb93"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">topicks::TopQueue::top</a></div><div class="ttdeci">const std::pair&lt; Stat_, Index_ &gt; &amp; top() const</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:246</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a3eb293431b5b55725148d1f24443a90f"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a3eb293431b5b55725148d1f24443a90f">topicks::TopQueue::TopQueue</a></div><div class="ttdeci">TopQueue(const Index_ top, const bool larger, const TopQueueOptions&lt; Stat_ &gt; &amp;options)</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:187</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_ae94d3c9521913c63e610c0ee07b1fcfe"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe">topicks::TopQueue::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:236</div></div>
-<div class="ttc" id="aclasstopicks_1_1TopQueue_html_afc4a3821ae393344b71fbedddfb481ee"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">topicks::TopQueue::size</a></div><div class="ttdeci">Index_ size() const</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:229</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a26e76a49e4e36fb1fe734bce3222e618"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">topicks::TopQueue::push</a></div><div class="ttdeci">void push(std::pair&lt; Stat_, Index_ &gt; gene)</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:195</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a36c1af55c44cbc3f5f2cbdc001435b2c"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a36c1af55c44cbc3f5f2cbdc001435b2c">topicks::TopQueue::pop</a></div><div class="ttdeci">void pop()</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:254</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a396044984a5dde2833fb7a1ec0048035"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035">topicks::TopQueue::emplace</a></div><div class="ttdeci">void emplace(Stat_ statistic, Index_ index)</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:217</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a3eb0f3afc1a9542736255b808015fb93"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a3eb0f3afc1a9542736255b808015fb93">topicks::TopQueue::top</a></div><div class="ttdeci">const std::pair&lt; Stat_, Index_ &gt; &amp; top() const</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:242</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_a3eb293431b5b55725148d1f24443a90f"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#a3eb293431b5b55725148d1f24443a90f">topicks::TopQueue::TopQueue</a></div><div class="ttdeci">TopQueue(const Index_ top, const bool larger, const TopQueueOptions&lt; Stat_ &gt; &amp;options)</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:183</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_ae94d3c9521913c63e610c0ee07b1fcfe"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe">topicks::TopQueue::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:232</div></div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html_afc4a3821ae393344b71fbedddfb481ee"><div class="ttname"><a href="classtopicks_1_1TopQueue.html#afc4a3821ae393344b71fbedddfb481ee">topicks::TopQueue::size</a></div><div class="ttdeci">Index_ size() const</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:225</div></div>
+<div class="ttc" id="anamespacetopicks_html"><div class="ttname"><a href="namespacetopicks.html">topicks</a></div><div class="ttdoc">Pick top genes from their statistics.</div><div class="ttdef"><b>Definition</b> pick_top_genes.hpp:17</div></div>
 <div class="ttc" id="astructtopicks_1_1TopQueueOptions_html"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html">topicks::TopQueueOptions</a></div><div class="ttdoc">Options for TopQueue.</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:22</div></div>
 <div class="ttc" id="astructtopicks_1_1TopQueueOptions_html_a6a382963aafef610e30c921c0705c4e2"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html#a6a382963aafef610e30c921c0705c4e2">topicks::TopQueueOptions::bound</a></div><div class="ttdeci">std::optional&lt; Stat_ &gt; bound</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:34</div></div>
 <div class="ttc" id="astructtopicks_1_1TopQueueOptions_html_a80d91d1ed3ae89aa9b8e92fb050b350f"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html#a80d91d1ed3ae89aa9b8e92fb050b350f">topicks::TopQueueOptions::open_bound</a></div><div class="ttdeci">bool open_bound</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:40</div></div>

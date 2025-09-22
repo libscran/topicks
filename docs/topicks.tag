@@ -1,10 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <tagfile doxygen_version="1.12.0">
   <compound kind="file">
+    <name>pick_top_genes.hpp</name>
+    <path>topicks/</path>
+    <filename>pick__top__genes_8hpp.html</filename>
+    <class kind="struct">topicks::PickTopGenesOptions</class>
+    <namespace>topicks</namespace>
+  </compound>
+  <compound kind="file">
     <name>topicks.hpp</name>
     <path>topicks/</path>
     <filename>topicks_8hpp.html</filename>
-    <class kind="struct">topicks::PickTopGenesOptions</class>
+    <includes id="pick__top__genes_8hpp" name="pick_top_genes.hpp" local="yes" import="no" module="no" objc="no">pick_top_genes.hpp</includes>
+    <includes id="TopQueue_8hpp" name="TopQueue.hpp" local="yes" import="no" module="no" objc="no">TopQueue.hpp</includes>
+    <namespace>topicks</namespace>
   </compound>
   <compound kind="file">
     <name>TopQueue.hpp</name>
@@ -12,6 +21,7 @@
     <filename>TopQueue_8hpp.html</filename>
     <class kind="struct">topicks::TopQueueOptions</class>
     <class kind="class">topicks::TopQueue</class>
+    <namespace>topicks</namespace>
   </compound>
   <compound kind="struct">
     <name>topicks::PickTopGenesOptions</name>
@@ -118,6 +128,34 @@
       <anchorfile>structtopicks_1_1TopQueueOptions.html</anchorfile>
       <anchor>aa40aaef482e1df7862067b5a71b58a9f</anchor>
       <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>topicks</name>
+    <filename>namespacetopicks.html</filename>
+    <class kind="struct">topicks::PickTopGenesOptions</class>
+    <class kind="class">topicks::TopQueue</class>
+    <class kind="struct">topicks::TopQueueOptions</class>
+    <member kind="function">
+      <type>void</type>
+      <name>pick_top_genes</name>
+      <anchorfile>namespacetopicks.html</anchorfile>
+      <anchor>afb96918e66418b1d67caca308c3acc98</anchor>
+      <arglist>(const std::size_t n, const Stat_ *const statistic, const std::size_t top, const bool larger, Bool_ *const output, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::vector&lt; Bool_ &gt;</type>
+      <name>pick_top_genes</name>
+      <anchorfile>namespacetopicks.html</anchorfile>
+      <anchor>afdc0dc3243590fe8190e5012c4d01ed9</anchor>
+      <arglist>(const std::size_t n, const Stat_ *const statistic, const std::size_t top, const bool larger, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::vector&lt; Index_ &gt;</type>
+      <name>pick_top_genes_index</name>
+      <anchorfile>namespacetopicks.html</anchorfile>
+      <anchor>ae75199c927619278d5871bb73096a877</anchor>
+      <arglist>(const Index_ n, const Stat_ *const statistic, const Index_ top, const bool larger, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</arglist>
     </member>
   </compound>
   <compound kind="page">

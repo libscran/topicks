@@ -106,17 +106,19 @@ $(function(){ initResizable(false); });
 <div class="line"> </div>
 <div class="line">std::vector&lt;double&gt; stats(100); <span class="comment">// vector of per-gene statistics.</span></div>
 <div class="line"><a class="code hl_struct" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions&lt;double&gt;</a> opts;</div>
-<div class="line"><span class="keyword">auto</span> filter = topicks::pick_top_genes(</div>
+<div class="line"><span class="keyword">auto</span> filter = <a class="code hl_function" href="namespacetopicks.html#afb96918e66418b1d67caca308c3acc98">topicks::pick_top_genes</a>(</div>
 <div class="line">    stats.size(),</div>
 <div class="line">    stats.data(),</div>
 <div class="line">    10, <span class="comment">// number of top genes to pick.</span></div>
 <div class="line">    <span class="keyword">true</span>, <span class="comment">// whether to pick genes with the largest &#39;stats&#39;.</span></div>
 <div class="line">    opts</div>
 <div class="line">);</div>
-<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> topicks.hpp:24</div></div>
-<div class="ttc" id="atopicks_8hpp_html"><div class="ttname"><a href="topicks_8hpp.html">topicks.hpp</a></div><div class="ttdoc">Choose top genes for downstream analyses.</div></div>
+<div class="ttc" id="anamespacetopicks_html_afb96918e66418b1d67caca308c3acc98"><div class="ttname"><a href="namespacetopicks.html#afb96918e66418b1d67caca308c3acc98">topicks::pick_top_genes</a></div><div class="ttdeci">void pick_top_genes(const std::size_t n, const Stat_ *const statistic, const std::size_t top, const bool larger, Bool_ *const output, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</div><div class="ttdef"><b>Definition</b> pick_top_genes.hpp:201</div></div>
+<div class="ttc" id="astructtopicks_1_1PickTopGenesOptions_html"><div class="ttname"><a href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a></div><div class="ttdoc">Options for pick_top_genes().</div><div class="ttdef"><b>Definition</b> pick_top_genes.hpp:24</div></div>
+<div class="ttc" id="atopicks_8hpp_html"><div class="ttname"><a href="topicks_8hpp.html">topicks.hpp</a></div><div class="ttdoc">Umbrella header for the topicks library.</div></div>
 </div><!-- fragment --><p>Alternatively we can obtain an array of integer indices:</p>
-<div class="fragment"><div class="line"><span class="keyword">auto</span> idx = topicks::pick_top_genes_index(stats.size(), stats.data(), 10, <span class="keyword">true</span>, opts);</div>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> idx = <a class="code hl_function" href="namespacetopicks.html#ae75199c927619278d5871bb73096a877">topicks::pick_top_genes_index</a>(stats.size(), stats.data(), 10, <span class="keyword">true</span>, opts);</div>
+<div class="ttc" id="anamespacetopicks_html_ae75199c927619278d5871bb73096a877"><div class="ttname"><a href="namespacetopicks.html#ae75199c927619278d5871bb73096a877">topicks::pick_top_genes_index</a></div><div class="ttdeci">std::vector&lt; Index_ &gt; pick_top_genes_index(const Index_ n, const Stat_ *const statistic, const Index_ top, const bool larger, const PickTopGenesOptions&lt; Stat_ &gt; &amp;options)</div><div class="ttdef"><b>Definition</b> pick_top_genes.hpp:264</div></div>
 </div><!-- fragment --><p>By default, ties at the selection boundary are retained so the actual number of chosen genes may be greater than what was requested. This can be disabled via the <code>PickTopGenesOptions</code> options:</p>
 <div class="fragment"><div class="line">opt.keep_ties = <span class="keyword">false</span>;</div>
 </div><!-- fragment --><p>We can also set an absolute bound on the statistic, e.g., to ensure that we never select marker genes with log-fold changes below some threshold:</p>
