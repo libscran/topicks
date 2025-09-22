@@ -88,8 +88,8 @@ void select_top_genes_by_threshold(const Index_ top, const Stat_* statistic, Out
     }
 }
 
-template<bool keep_index_, typename Index_, typename Stat_, typename Top_, class Output_, class CmpNotEqual_, class CmpEqual_>
-void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Output_& output, const CmpNotEqual_ cmpne, const CmpEqual_ cmpeq, const PickTopGenesOptions<Stat_>& options) {
+template<bool keep_index_, typename Index_, typename Stat_, class Output_, class CmpNotEqual_, class CmpEqual_>
+void pick_top_genes(const Index_ n, const Stat_* statistic, const Index_ top, Output_& output, const CmpNotEqual_ cmpne, const CmpEqual_ cmpeq, const PickTopGenesOptions<Stat_>& options) {
     if (top == 0) {
         if constexpr(keep_index_) {
             ; // no-op, we assume it's already empty.
@@ -99,7 +99,7 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
         return;
     }
 
-    if (sanisizer::is_greater_than_or_equal(top, n)) {
+    if (top >= n) {
         if (options.bound.has_value()) {
             if (options.open_bound) {
                 filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpne, *(options.bound));
@@ -186,7 +186,6 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
 
 /**
  * @tparam Stat_ Numeric type of the statistic for picking top genes.
- * @tparam Top_ Integer type of the number of top genes.
  * @tparam Bool_ Output boolean type. 
  *
  * @param n Number of genes.
@@ -203,8 +202,8 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Top_ top, Outp
  * On output, the `i`-th element will be `true` if gene `i` is one of the top genes and `false` otherwise.
  * @param options Further options.
  */
-template<typename Stat_, typename Top_, typename Bool_>
-void pick_top_genes(const std::size_t n, const Stat_* const statistic, const Top_ top, const bool larger, Bool_* const output, const PickTopGenesOptions<Stat_>& options) {
+template<typename Stat_, typename Bool_>
+void pick_top_genes(const std::size_t n, const Stat_* const statistic, const std::size_t top, const bool larger, Bool_* const output, const PickTopGenesOptions<Stat_>& options) {
     if (larger) {
         internal::pick_top_genes<false>(
             n, 
@@ -231,7 +230,6 @@ void pick_top_genes(const std::size_t n, const Stat_* const statistic, const Top
 /**
  * @tparam Bool_ Output boolean type. 
  * @tparam Stat_ Numeric type of the statistic for picking top genes.
- * @tparam Top_ Integer type of the number of top genes.
  *
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n`, containing the statistics with which to rank genes.
@@ -241,8 +239,8 @@ void pick_top_genes(const std::size_t n, const Stat_* const statistic, const Top
  *
  * @return A vector of booleans of length `n`, indicating whether each gene is to be retained.
  */
-template<typename Bool_, typename Stat_, typename Top_>
-std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statistic, const Top_ top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
+template<typename Bool_, typename Stat_>
+std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statistic, const std::size_t top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
     auto output = sanisizer::create<std::vector<Bool_> >(n
 #ifdef SCRAN_VARIANCES_TEST_INIT
         , SCRAN_VARIANCES_TEST_INIT
@@ -255,7 +253,6 @@ std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statis
 /**
  * @tparam Index_ Integer type of the output indices.
  * @tparam Stat_ Numeric type of the statistic for picking top genes.
- * @tparam Top_ Integer type of the number of top genes.
  *
  * @param n Number of genes.
  * @param[in] statistic Pointer to an array of length `n` containing the statistics with which to rank genes.
@@ -266,8 +263,8 @@ std::vector<Bool_> pick_top_genes(const std::size_t n, const Stat_* const statis
  * @return Vector of sorted and unique indices for the chosen genes.
  * All indices are guaranteed to be non-negative and less than `n`.
  */
-template<typename Index_, typename Stat_, typename Top_>
-std::vector<Index_> pick_top_genes_index(const Index_ n, const Stat_* const statistic, const Top_ top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
+template<typename Index_, typename Stat_>
+std::vector<Index_> pick_top_genes_index(const Index_ n, const Stat_* const statistic, const Index_ top, const bool larger, const PickTopGenesOptions<Stat_>& options) {
     std::vector<Index_> output;
     if (larger) {
         internal::pick_top_genes<true>(

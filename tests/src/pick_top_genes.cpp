@@ -169,20 +169,20 @@ TEST(Topicks, TiedLarger) {
     topicks::PickTopGenesOptions<double> opt;
     opt.keep_ties = false;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 3, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         std::vector<size_t> expected { 3, 5, 6 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 3, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 
     // Introducing a bound.
     opt.bound = 3.3;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 3, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         std::vector<size_t> expected { 5, 6 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 3, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 
@@ -190,20 +190,20 @@ TEST(Topicks, TiedLarger) {
     opt.keep_ties = true;
     opt.bound.reset();
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 3, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         std::vector<size_t> expected { 3, 5, 6, 7 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 3, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 
     // Keeping all ties, with a bound.
     opt.bound = 3.3;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 3, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         std::vector<size_t> expected { 5, 6 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 3, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(3), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 }
@@ -215,20 +215,20 @@ TEST(Topicks, TiedSmaller) {
     topicks::PickTopGenesOptions<double> opt;
     opt.keep_ties = false;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 2, false, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         std::vector<size_t> expected { 0, 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 2, false, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         compare_bool_with_index(output, ioutput);
     }
 
     // Introducing a bound.
     opt.bound = 1.1;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 2, false, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         std::vector<size_t> expected { 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 2, false, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         compare_bool_with_index(output, ioutput);
     }
 
@@ -236,20 +236,20 @@ TEST(Topicks, TiedSmaller) {
     opt.keep_ties = true;
     opt.bound.reset();
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 2, false, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         std::vector<size_t> expected { 0, 2, 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 2, false, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         compare_bool_with_index(output, ioutput);
     }
 
     // Keeping all ties with a bound.
     opt.bound = 1.1;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 2, false, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         std::vector<size_t> expected { 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 2, false, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(2), false, opt);
         compare_bool_with_index(output, ioutput);
     }
 }
@@ -257,10 +257,10 @@ TEST(Topicks, TiedSmaller) {
 TEST(Topicks, Extremes) {
     std::vector<double> x{ 1.1, 2.2, 1.1, 3.3, 0.0, 4.4, 4.4, 3.3 };
     topicks::PickTopGenesOptions<double> opt;
-    auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 0, true, opt);
+    auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(0), true, opt);
     EXPECT_EQ(0, std::accumulate(output.begin(), output.end(), 0));
 
-    auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 0, true, opt);
+    auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(0), true, opt);
     EXPECT_TRUE(ioutput.empty());
 }
 
@@ -273,34 +273,34 @@ TEST(Topicks, ClosedBound) {
 
     // Running this as a control.
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 10, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(10), true, opt);
         std::vector<size_t> expected { 2, 4 };
         EXPECT_EQ(ioutput, expected);
     }
 
     opt.open_bound = false;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 10, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(10), true, opt);
         std::vector<size_t> expected { 1, 2, 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 10, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(10), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 4, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(4), true, opt);
         std::vector<size_t> expected { 1, 2, 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 4, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(4), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 
     opt.keep_ties = false;
     {
-        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), 4, true, opt);
+        auto ioutput = topicks::pick_top_genes_index(x.size(), x.data(), static_cast<std::size_t>(4), true, opt);
         std::vector<size_t> expected { 1, 2, 4 };
         EXPECT_EQ(ioutput, expected);
-        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), 4, true, opt);
+        auto output = topicks::pick_top_genes<char>(x.size(), x.data(), static_cast<std::size_t>(4), true, opt);
         compare_bool_with_index(output, ioutput);
     }
 }
