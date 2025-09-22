@@ -27,7 +27,7 @@ macro(decorate_test target)
     gtest_discover_tests(${target})
 endmacro()
 
-add_executable(libtest src/topicks.cpp)
+add_executable(libtest src/topicks.cpp src/TopQueue.cpp)
 decorate_test(libtest)
 
 add_executable(dirtytest src/topicks.cpp)
