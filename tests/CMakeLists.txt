@@ -27,9 +27,9 @@ macro(decorate_test target)
     gtest_discover_tests(${target})
 endmacro()
 
-add_executable(libtest src/topicks.cpp src/TopQueue.cpp)
+add_executable(libtest src/pick_top_genes.cpp src/TopQueue.cpp)
 decorate_test(libtest)
 
-add_executable(dirtytest src/topicks.cpp)
+add_executable(dirtytest src/pick_top_genes.cpp)
 decorate_test(dirtytest)
 target_compile_definitions(dirtytest PRIVATE "SCRAN_VARIANCES_TEST_INIT=scran_tests::initial_value()")

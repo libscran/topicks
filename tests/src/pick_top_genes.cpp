@@ -1,6 +1,6 @@
 #include "scran_tests/scran_tests.hpp"
 
-#include "topicks/topicks.hpp"
+#include "topicks/pick_top_genes.hpp"
 
 #include <unordered_set>
 #include <cstddef>
