@@ -117,6 +117,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af66b687b1bc89dee122ab85a27afdf3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2db78cb727b9c6e9c687127ee5bbbb69" id="r_a2db78cb727b9c6e9c687127ee5bbbb69"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2db78cb727b9c6e9c687127ee5bbbb69">keep_ties</a> = true</td></tr>
 <tr class="separator:a2db78cb727b9c6e9c687127ee5bbbb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fdd3e1b41ae71eef6194d4d56f48180" id="r_a9fdd3e1b41ae71eef6194d4d56f48180"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fdd3e1b41ae71eef6194d4d56f48180">check_nan</a> = false</td></tr>
+<tr class="separator:a9fdd3e1b41ae71eef6194d4d56f48180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Stat_&gt;<br />
@@ -183,6 +185,23 @@ template&lt;typename Stat_ &gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Whether to keep all genes with statistics that are tied with the <code>top</code>-th gene. If <code>false</code>, ties are arbitrarily broken but the number of retained genes will not be greater than <code>top</code>. </p>
+
+</div>
+</div>
+<a id="a9fdd3e1b41ae71eef6194d4d56f48180" name="a9fdd3e1b41ae71eef6194d4d56f48180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fdd3e1b41ae71eef6194d4d56f48180">&#9670;&#160;</a></span>check_nan</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Stat_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="structtopicks_1_1PickTopGenesOptions.html">topicks::PickTopGenesOptions</a>&lt; Stat_ &gt;::check_nan = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether to check for NaN values and ignore them. If <code>false</code>, it is assumed that no NaNs are present in <code>statistic</code>. </p>
 
 </div>
 </div>

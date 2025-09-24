@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['emplace_0',['emplace',['../classtopicks_1_1TopQueue.html#a396044984a5dde2833fb7a1ec0048035',1,'topicks::TopQueue']]],
-  ['empty_1',['empty',['../classtopicks_1_1TopQueue.html#ae94d3c9521913c63e610c0ee07b1fcfe',1,'topicks::TopQueue']]]
+  ['check_5fnan_0',['check_nan',['../structtopicks_1_1PickTopGenesOptions.html#a9fdd3e1b41ae71eef6194d4d56f48180',1,'topicks::PickTopGenesOptions::check_nan'],['../structtopicks_1_1TopQueueOptions.html#a77c453e86c0bcbd636ff24bd4ab2d503',1,'topicks::TopQueueOptions::check_nan']]]
 ];

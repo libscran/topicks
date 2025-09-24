@@ -48,6 +48,13 @@
       <anchor>a2db78cb727b9c6e9c687127ee5bbbb69</anchor>
       <arglist></arglist>
     </member>
+    <member kind="variable">
+      <type>bool</type>
+      <name>check_nan</name>
+      <anchorfile>structtopicks_1_1PickTopGenesOptions.html</anchorfile>
+      <anchor>a9fdd3e1b41ae71eef6194d4d56f48180</anchor>
+      <arglist></arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>topicks::TopQueue</name>
@@ -127,6 +134,13 @@
       <name>keep_ties</name>
       <anchorfile>structtopicks_1_1TopQueueOptions.html</anchorfile>
       <anchor>aa40aaef482e1df7862067b5a71b58a9f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>bool</type>
+      <name>check_nan</name>
+      <anchorfile>structtopicks_1_1TopQueueOptions.html</anchorfile>
+      <anchor>a77c453e86c0bcbd636ff24bd4ab2d503</anchor>
       <arglist></arglist>
     </member>
   </compound>
