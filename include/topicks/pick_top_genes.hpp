@@ -6,6 +6,8 @@
 #include <numeric>
 #include <cstddef>
 #include <type_traits>
+#include <limits>
+#include <cmath>
 
 #include "sanisizer/sanisizer.hpp"
 
@@ -46,6 +48,12 @@ struct PickTopGenesOptions {
      * If `false`, ties are arbitrarily broken but the number of retained genes will not be greater than `top`.
      */
     bool keep_ties = true;
+
+    /**
+     * Whether to check for NaN values and ignore them.
+     * If `false`, it is assumed that no NaNs are present in `statistic`.
+     */
+    bool check_nan = false;
 };
 
 /**
@@ -60,6 +68,7 @@ std::remove_cv_t<std::remove_reference_t<Input_> > I(Input_ x) {
 
 template<bool keep_index_, typename Index_, typename Stat_, class Output_, class Cmp_>
 void filter_genes_by_threshold(const Index_ n, const Stat_* statistic, Output_& output, const Cmp_ cmp, const Stat_ threshold) {
+    // This function is inherently safe as 'ok' will always be false for any comparison involving NaNs.
     for (Index_ i = 0; i < n; ++i) {
         const bool ok = cmp(statistic[i], threshold);
         if constexpr(keep_index_) {
@@ -99,29 +108,62 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Index_ top, Ou
         return;
     }
 
-    if (top >= n) {
+    Index_ num_nan = 0;
+    if constexpr(std::numeric_limits<Stat_>::has_quiet_NaN) {
+        if (options.check_nan) {
+            for (Index_ i = 0; i < n; ++i) {
+                num_nan += std::isnan(statistic[i]);
+            }
+        }
+    }
+
+    if (top >= n - num_nan) {
         if (options.bound.has_value()) {
             if (options.open_bound) {
                 filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpne, *(options.bound));
             } else {
                 filter_genes_by_threshold<keep_index_>(n, statistic, output, cmpeq, *(options.bound));
             }
-        } else {
+        } else if (num_nan == 0) {
             if constexpr(keep_index_) {
                 sanisizer::resize(output, n);
                 std::iota(output.begin(), output.end(), static_cast<Index_>(0));
             } else {
                 std::fill_n(output, n, true);
             }
+        } else {
+            if constexpr(keep_index_) {
+                output.reserve(n - num_nan);
+                for (Index_ i = 0; i < n; ++i) {
+                    if (!std::isnan(statistic[i])) {
+                        output.push_back(i);
+                    }
+                }
+            } else {
+                for (Index_ i = 0; i < n; ++i) {
+                    output[i] = !std::isnan(statistic[i]);
+                }
+            }
         }
         return;
     }
 
-    auto semi_sorted = sanisizer::create<std::vector<Index_> >(n);
-    std::iota(semi_sorted.begin(), semi_sorted.end(), static_cast<Index_>(0));
+    std::vector<Index_> semi_sorted;
+    if (num_nan == 0) {
+        sanisizer::resize(semi_sorted, n);
+        std::iota(semi_sorted.begin(), semi_sorted.end(), static_cast<Index_>(0));
+    } else {
+        semi_sorted.reserve(n - num_nan);
+        for (Index_ i = 0; i < n; ++i) {
+            if (!std::isnan(statistic[i])) {
+                semi_sorted.push_back(i);
+            }
+        }
+    }
+
     const auto cBegin = semi_sorted.begin(), cMid = cBegin + top - 1, cEnd = semi_sorted.end();
-    std::nth_element(cBegin, cMid, cEnd, [&](Index_ l, Index_ r) -> bool { 
-        auto L = statistic[l], R = statistic[r];
+    std::nth_element(cBegin, cMid, cEnd, [&](const Index_ l, const Index_ r) -> bool { 
+        const auto L = statistic[l], R = statistic[r];
         if (L == R) {
             return l < r; // always favor the earlier index for a stable sort, even if larger = false.
         } else {

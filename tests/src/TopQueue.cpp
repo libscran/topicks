@@ -279,6 +279,41 @@ TEST(TopQueue, SmallerBoundClosed) {
     EXPECT_EQ(tq.size(), 2);
 }
 
+TEST(TopQueue, NaN) {
+    {
+        topicks::TopQueueOptions<double> options;
+        options.check_nan = true;
+
+        topicks::TopQueue<double, int> tq(3, false, options);
+        tq.push({ std::numeric_limits<double>::quiet_NaN(), 0 });
+        EXPECT_EQ(tq.size(), 0);
+
+        tq.push({ 5.0, 1 });
+        EXPECT_EQ(tq.top(), std::make_pair(5.0, 1));
+        EXPECT_EQ(tq.size(), 1);
+    }
+
+    // Coverage for the skipped NaN check if the type doesn't support NaNs.
+    {
+        topicks::TopQueueOptions<int> options;
+        options.check_nan = true;
+
+        topicks::TopQueue<int, int> tq(3, false, options);
+        tq.push({ 1, 0 });
+        EXPECT_EQ(tq.top(), std::make_pair(1, 0));
+        EXPECT_EQ(tq.size(), 1);
+
+        tq.push({ 5, 1 });
+        EXPECT_EQ(tq.top(), std::make_pair(5, 1));
+        EXPECT_EQ(tq.size(), 2);
+
+        tq.push({ 3, 1 });
+        EXPECT_EQ(tq.top(), std::make_pair(5, 1));
+        EXPECT_EQ(tq.size(), 3);
+    }
+}
+
+
 class TopQueueTest : public ::testing::TestWithParam<std::tuple<int, int, bool, std::pair<bool, double> > > {};
 
 TEST_P(TopQueueTest, Consistency) {

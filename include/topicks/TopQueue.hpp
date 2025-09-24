@@ -4,6 +4,8 @@
 #include <vector>
 #include <algorithm>
 #include <optional>
+#include <limits>
+#include <cmath>
 
 #include "sanisizer/sanisizer.hpp"
 
@@ -44,6 +46,12 @@ struct TopQueueOptions {
      * If `false`, the number of genes in the queue will not be greater than `top`; ties are broken by retaining genes with a lower index.
      */
     bool keep_ties = true;
+
+    /**
+     * Whether to check for NaN values and ignore them.
+     * If `false`, it is assumed that no NaNs will be added to the queue.
+     */
+    bool check_nan = false;
 };
 
 /**
@@ -92,6 +100,7 @@ private:
     std::optional<Stat_> my_bound; 
     bool my_open_bound;
     bool my_keep_ties;
+    bool my_check_nan;
 
 private:
     template<class Compare_, class Skip_>
@@ -100,6 +109,12 @@ private:
             if (skip(*my_bound, gene.first)) {
                 return;
             } else if (my_open_bound && *my_bound == gene.first) {
+                return;
+            }
+        }
+
+        if constexpr(std::numeric_limits<Stat_>::has_quiet_NaN) {
+            if (my_check_nan && std::isnan(gene.first)) {
                 return;
             }
         }
@@ -185,7 +200,8 @@ public:
         my_larger(larger),
         my_bound(options.bound),
         my_open_bound(options.open_bound),
-        my_keep_ties(options.keep_ties)
+        my_keep_ties(options.keep_ties),
+        my_check_nan(options.check_nan)
     {}
 
     /**
