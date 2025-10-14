@@ -313,6 +313,12 @@ TEST(TopQueue, NaN) {
     }
 }
 
+TEST(TopQueue, Reserve) {
+    topicks::TopQueueOptions<double> options;
+    options.reserve = 0;
+    topicks::TopQueue<double, int> q(10, true, options);
+    EXPECT_EQ(q.size(), 0);
+}
 
 class TopQueueTest : public ::testing::TestWithParam<std::tuple<int, int, bool, std::pair<bool, double> > > {};
 
