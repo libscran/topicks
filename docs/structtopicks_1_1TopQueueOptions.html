@@ -119,6 +119,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aa40aaef482e1df7862067b5a71b58a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77c453e86c0bcbd636ff24bd4ab2d503" id="r_a77c453e86c0bcbd636ff24bd4ab2d503"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77c453e86c0bcbd636ff24bd4ab2d503">check_nan</a> = false</td></tr>
 <tr class="separator:a77c453e86c0bcbd636ff24bd4ab2d503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a240e40e153894283540192188e9ecf20" id="r_a240e40e153894283540192188e9ecf20"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a240e40e153894283540192188e9ecf20">reserve</a></td></tr>
+<tr class="separator:a240e40e153894283540192188e9ecf20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Stat_&gt;<br />
@@ -202,6 +204,23 @@ template&lt;typename Stat_ &gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Whether to check for NaN values and ignore them. If <code>false</code>, it is assumed that no NaNs will be added to the queue. </p>
+
+</div>
+</div>
+<a id="a240e40e153894283540192188e9ecf20" name="a240e40e153894283540192188e9ecf20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a240e40e153894283540192188e9ecf20">&#9670;&#160;</a></span>reserve</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Stat_ &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;std::size_t&gt; <a class="el" href="structtopicks_1_1TopQueueOptions.html">topicks::TopQueueOptions</a>&lt; Stat_ &gt;::reserve</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Memory to reserve for the underlying storage during <code><a class="el" href="classtopicks_1_1TopQueue.html" title="Priority queue for retaining top genes.">TopQueue</a></code> construction. If not provided, memory is automatically reserved for <code>top</code> elements to prevent any reallocation upon <code><a class="el" href="classtopicks_1_1TopQueue.html#a26e76a49e4e36fb1fe734bce3222e618">TopQueue::push()</a></code>. Setting this value to zero will disable preallocation. </p>
 
 </div>
 </div>

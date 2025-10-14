@@ -99,7 +99,7 @@ $(function(){ initResizable(false); });
 <div class="textblock"><p><a class="anchor" id="md__2github_2workspace_2README"></a></p>
 <p><img src="https://github.com/libscran/topicks/actions/workflows/run-tests.yaml/badge.svg" alt="Unit tests" style="pointer-events: none;" class="inline"/> <img src="https://github.com/libscran/topicks/actions/workflows/doxygenate.yaml/badge.svg" alt="Documentation" style="pointer-events: none;" class="inline"/> <a href="https://codecov.io/gh/libscran/topicks"><img src="https://codecov.io/gh/libscran/topicks/graph/badge.svg?token=JWV0I4WJX2" alt="Codecov" style="pointer-events: none;" class="inline"/></a></p>
 <h1>Overview</h1>
-<p>The <b>topicks</b> library implements a <code>pick_top_genes()</code> function to pick the top genes based on some statistic. The idea is to use this to choose highly variable genes based on their variances (e.g., from <a href="https://github.com/libscran/scran_variances"><b>scran_variances</b></a>), or for picking the best markers based on a differential expression statistic (e.g., from <a href="https://github.com/libscran/scran_markers"><b>scran_markers</b></a>). This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices.</p>
+<p>The <b>topicks</b> library implements a <code>pick_top_genes()</code> function to pick the top genes based on some statistic. The idea is to use this to choose highly variable genes based on their variances (e.g., from <a href="https://github.com/libscran/scran_variances"><b>scran_variances</b></a>), or for picking the best markers based on a differential expression statistic (e.g., from <a href="https://github.com/libscran/scran_markers"><b>scran_markers</b></a>). This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices. We also implement the <code>TopQueue</code> class, a tie- and bound-aware priority queue for retaining the top genes.</p>
 <h1>Quick start</h1>
 <p>We can obtain an array of booleans indicating whether each gene was picked based on its <code>stats</code>:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="topicks_8hpp.html">topicks/topicks.hpp</a>&quot;</span></div>
@@ -123,6 +123,30 @@ $(function(){ initResizable(false); });
 <div class="fragment"><div class="line">opt.keep_ties = <span class="keyword">false</span>;</div>
 </div><!-- fragment --><p>We can also set an absolute bound on the statistic, e.g., to ensure that we never select marker genes with log-fold changes below some threshold:</p>
 <div class="fragment"><div class="line">opt.bound = 0.5;</div>
+</div><!-- fragment --><p>Perhaps we don't have an entire array of statistics, and we are only computing each gene's statistics as needed. We can use the <code>TopQueue</code> class to choose the top genes in a running manner:</p>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structtopicks_1_1TopQueueOptions.html">topicks::TopQueueOptions&lt;double&gt;</a> qopts;</div>
+<div class="line">qopts.<a class="code hl_variable" href="structtopicks_1_1TopQueueOptions.html#a6a382963aafef610e30c921c0705c4e2">bound</a> = 0.6;</div>
+<div class="line">qopts.<a class="code hl_variable" href="structtopicks_1_1TopQueueOptions.html#aa40aaef482e1df7862067b5a71b58a9f">keep_ties</a> = <span class="keyword">true</span>;</div>
+<div class="line">qopts.<a class="code hl_variable" href="structtopicks_1_1TopQueueOptions.html#a77c453e86c0bcbd636ff24bd4ab2d503">check_nan</a> = <span class="keyword">true</span>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Picking the top 10 genes with the largest statistics.</span></div>
+<div class="line"><a class="code hl_class" href="classtopicks_1_1TopQueue.html">topicks::TopQueue&lt;double, int&gt;</a> running_best(10, <span class="keyword">true</span>, qopts);</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> g = 0; g &lt; ngenes; ++g) {</div>
+<div class="line">    running_best.emplace(compute_some_statistic(g), g);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Same result as pick_top_genes_index(), sans the ordering.</span></div>
+<div class="line">std::vector&lt;int&gt; best_final;</div>
+<div class="line"><span class="keywordflow">while</span> (!running_best.empty()) {</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; best = running_best.top();</div>
+<div class="line">    best_final.push_back(best.second);</div>
+<div class="line">    running_best.pop();</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasstopicks_1_1TopQueue_html"><div class="ttname"><a href="classtopicks_1_1TopQueue.html">topicks::TopQueue</a></div><div class="ttdoc">Priority queue for retaining top genes.</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:75</div></div>
+<div class="ttc" id="astructtopicks_1_1TopQueueOptions_html"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html">topicks::TopQueueOptions</a></div><div class="ttdoc">Options for TopQueue.</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:25</div></div>
+<div class="ttc" id="astructtopicks_1_1TopQueueOptions_html_a6a382963aafef610e30c921c0705c4e2"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html#a6a382963aafef610e30c921c0705c4e2">topicks::TopQueueOptions::bound</a></div><div class="ttdeci">std::optional&lt; Stat_ &gt; bound</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:37</div></div>
+<div class="ttc" id="astructtopicks_1_1TopQueueOptions_html_a77c453e86c0bcbd636ff24bd4ab2d503"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html#a77c453e86c0bcbd636ff24bd4ab2d503">topicks::TopQueueOptions::check_nan</a></div><div class="ttdeci">bool check_nan</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:55</div></div>
+<div class="ttc" id="astructtopicks_1_1TopQueueOptions_html_aa40aaef482e1df7862067b5a71b58a9f"><div class="ttname"><a href="structtopicks_1_1TopQueueOptions.html#aa40aaef482e1df7862067b5a71b58a9f">topicks::TopQueueOptions::keep_ties</a></div><div class="ttdeci">bool keep_ties</div><div class="ttdef"><b>Definition</b> TopQueue.hpp:49</div></div>
 </div><!-- fragment --><p>Check out the <a href="https://libscran.github.io/topicks">reference documentation</a> for more details.</p>
 <h1>Building projects</h1>
 <h2>CMake with <code>FetchContent</code></h2>

@@ -143,6 +143,13 @@
       <anchor>a77c453e86c0bcbd636ff24bd4ab2d503</anchor>
       <arglist></arglist>
     </member>
+    <member kind="variable">
+      <type>std::optional&lt; std::size_t &gt;</type>
+      <name>reserve</name>
+      <anchorfile>structtopicks_1_1TopQueueOptions.html</anchorfile>
+      <anchor>a240e40e153894283540192188e9ecf20</anchor>
+      <arglist></arglist>
+    </member>
   </compound>
   <compound kind="namespace">
     <name>topicks</name>

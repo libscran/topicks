@@ -1,30 +1,31 @@
 <map id="topicks/topicks.hpp" name="topicks/topicks.hpp">
-<area shape="rect" id="Node000001" title="Umbrella header for the topicks library." alt="" coords="357,5,490,31"/>
-<area shape="rect" id="Node000002" href="$pick__top__genes_8hpp.html" title="Pick top genes from an array of statistics." alt="" coords="429,79,565,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="438,29,476,66,472,70,434,33"/>
-<area shape="rect" id="Node000011" href="$TopQueue_8hpp.html" title="Priority queue for the top genes." alt="" coords="299,79,404,105"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="414,33,377,70,373,66,410,29"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="351,153,408,178"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="479,107,414,147,411,142,476,103"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="432,153,506,178"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="495,106,482,139,477,137,490,104"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="608,153,675,178"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="523,103,604,143,602,148,520,108"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="698,153,763,178"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="538,103,684,147,683,152,536,108"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="787,153,868,178"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="554,103,773,150,772,155,553,108"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="531,153,583,178"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="509,103,539,139,535,142,505,107"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="95,153,152,178"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="429,106,311,126,168,155,167,149,310,120,428,101"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="176,153,328,178"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="456,108,309,150,307,145,455,103"/>
-<area shape="poly" id="edge11_Node000011_Node000003" title=" " alt="" coords="359,104,372,137,367,139,354,106"/>
-<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="373,103,438,142,435,147,370,107"/>
-<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="388,103,517,148,516,153,386,108"/>
-<area shape="poly" id="edge15_Node000011_Node000009" title=" " alt="" coords="314,108,168,153,167,148,312,103"/>
-<area shape="poly" id="edge16_Node000011_Node000010" title=" " alt="" coords="336,107,283,145,280,141,333,103"/>
+<area shape="rect" id="Node000001" title="Umbrella header for the topicks library." alt="" coords="334,5,468,31"/>
+<area shape="rect" id="Node000002" href="$pick__top__genes_8hpp.html" title="Pick top genes from an array of statistics." alt="" coords="406,79,543,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,29,453,66,450,70,411,33"/>
+<area shape="rect" id="Node000011" href="$TopQueue_8hpp.html" title="Priority queue for the top genes." alt="" coords="276,79,382,105"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="391,33,354,70,350,66,387,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="428,153,486,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="474,106,466,138,461,137,469,104"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="509,153,584,178"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="488,103,525,140,522,143,485,107"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="802,153,870,178"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="544,102,788,149,787,155,543,107"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="608,153,672,178"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="504,103,599,144,597,149,501,108"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="696,153,778,178"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="520,103,682,147,681,152,518,108"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="96,153,149,178"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="407,107,297,126,164,155,163,150,296,121,406,101"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="172,153,230,178"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="426,108,246,154,244,149,425,103"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="254,153,405,178"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="451,108,369,148,366,143,449,103"/>
+<area shape="poly" id="edge11_Node000011_Node000003" title=" " alt="" coords="352,103,423,142,421,147,350,108"/>
+<area shape="poly" id="edge12_Node000011_Node000004" title=" " alt="" coords="367,103,496,145,494,150,365,108"/>
+<area shape="poly" id="edge16_Node000011_Node000006" title=" " alt="" coords="383,102,593,149,592,155,382,107"/>
+<area shape="poly" id="edge14_Node000011_Node000008" title=" " alt="" coords="295,108,164,153,162,148,293,103"/>
+<area shape="poly" id="edge15_Node000011_Node000009" title=" " alt="" coords="309,108,238,147,235,142,306,103"/>
+<area shape="poly" id="edge17_Node000011_Node000010" title=" " alt="" coords="332,105,332,137,326,137,326,105"/>
 <area shape="rect" id="Node000012" title=" " alt="" coords="5,153,72,178"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="299,107,87,155,86,149,298,102"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="279,108,88,155,86,149,278,103"/>
 </map>
