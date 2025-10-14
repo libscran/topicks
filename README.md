@@ -10,6 +10,7 @@ The **topicks** library implements a `pick_top_genes()` function to pick the top
 The idea is to use this to choose highly variable genes based on their variances (e.g., from [**scran_variances**](https://github.com/libscran/scran_variances)),
 or for picking the best markers based on a differential expression statistic (e.g., from [**scran_markers**](https://github.com/libscran/scran_markers)).
 This functionality is surprisingly complex when we need to consider ties, absolute bounds, and whether to return a boolean filter or an array of indices. 
+We also implement the `TopQueue` class, a tie- and bound-aware priority queue for retaining the top genes.
 
 ## Quick start
 
@@ -46,6 +47,30 @@ We can also set an absolute bound on the statistic, e.g., to ensure that we neve
 
 ```cpp
 opt.bound = 0.5;
+```
+
+Perhaps we don't have an entire array of statistics, and we are only computing each gene's statistics as needed.
+We can use the `TopQueue` class to choose the top genes in a running manner:
+
+```cpp
+topicks::TopQueueOptions<double> qopts;
+qopts.bound = 0.6;
+qopts.keep_ties = true;
+qopts.check_nan = true;
+
+// Picking the top 10 genes with the largest statistics.
+topicks::TopQueue<double, int> running_best(10, true, qopts);
+for (int g = 0; g < ngenes; ++g) {
+    running_best.emplace(compute_some_statistic(g), g);
+}
+
+// Same result as pick_top_genes_index(), sans the ordering.
+std::vector<int> best_final;
+while (!running_best.empty()) {
+    const auto& best = running_best.top();
+    best_final.push_back(best.second);
+    running_best.pop();
+}
 ```
 
 Check out the [reference documentation](https://libscran.github.io/topicks) for more details.

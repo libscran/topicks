@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 project(topicks
-    VERSION 0.2.1
+    VERSION 0.2.2
     DESCRIPTION "Pick top genes for downstream analyses"
     LANGUAGES CXX)
 
