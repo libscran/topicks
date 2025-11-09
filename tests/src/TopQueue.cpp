@@ -330,7 +330,7 @@ TEST_P(TopQueueTest, Consistency) {
     auto bound = std::get<3>(p);
 
     auto x = scran_tests::simulate_vector(ngenes, [&]{
-        scran_tests::SimulationParameters sparams;
+        scran_tests::SimulateVectorParameters sparams;
         sparams.lower = 0;
         sparams.upper = 10;
         sparams.seed = ngenes * ntop + 42 + larger;
