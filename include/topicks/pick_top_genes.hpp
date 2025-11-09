@@ -62,9 +62,7 @@ struct PickTopGenesOptions {
 namespace internal {
 
 template<typename Input_>
-std::remove_cv_t<std::remove_reference_t<Input_> > I(Input_ x) {
-    return x;
-}
+using I = typename std::remove_cv<typename std::remove_reference<Input_>::type>::type;
 
 template<bool keep_index_, typename Index_, typename Stat_, class Output_, class Cmp_>
 void filter_genes_by_threshold(const Index_ n, const Stat_* statistic, Output_& output, const Cmp_ cmp, const Stat_ threshold) {
@@ -194,7 +192,7 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Index_ top, Ou
     }
 
     if constexpr(keep_index_) {
-        output.reserve(sanisizer::cast<decltype(I(output.size()))>(top));
+        output.reserve(sanisizer::cast<I<decltype(output.size())> >(top));
     } else {
         std::fill_n(output, n, false);
     }
@@ -210,7 +208,7 @@ void pick_top_genes(const Index_ n, const Stat_* statistic, const Index_ top, Ou
         if constexpr(keep_index_) {
             output.insert(output.end(), semi_sorted.begin(), semi_sorted.begin() + top);
         } else {
-            for (decltype(I(top)) i = 0; i < top; ++i) {
+            for (I<decltype(top)> i = 0; i < top; ++i) {
                 output[semi_sorted[i]] = true;
             }
         }
