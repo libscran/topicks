@@ -320,6 +320,17 @@ TEST(TopQueue, Reserve) {
     EXPECT_EQ(q.size(), 0);
 }
 
+TEST(TopQueue, Zero) {
+    topicks::TopQueueOptions<double> options;
+    topicks::TopQueue<double, int> tq(0, true, options);
+    tq.push({ 10.1, 2 });
+    EXPECT_EQ(tq.size(), 0);
+    tq.push({ -2.1, 1 });
+    EXPECT_EQ(tq.size(), 0);
+    tq.push({ 0.1, 3 });
+    EXPECT_EQ(tq.size(), 0);
+}
+
 class TopQueueTest : public ::testing::TestWithParam<std::tuple<int, int, bool, std::pair<bool, double> > > {};
 
 TEST_P(TopQueueTest, Consistency) {

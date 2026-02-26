@@ -199,6 +199,7 @@ private:
 public:
     /**
      * @param top Number of top genes to choose.
+     * This should be a non-negative integer.
      * Note that the actual number of chosen genes may be smaller/larger than `top`, depending on the number of genes and `options`.
      * @param larger Whether the top genes are defined as those with larger statistics.
      * @param options Further options.
