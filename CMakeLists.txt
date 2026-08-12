@@ -18,23 +18,23 @@ target_include_directories(topicks INTERFACE
 target_compile_features(topicks INTERFACE cxx_std_17)
 
 # Dependencies
-option(TOPICKER_FETCH_EXTERN "Automatically fetch topicks's external dependencies." ON)
-if(TOPICKER_FETCH_EXTERN)
+option(TOPICKS_FETCH_EXTERN "Automatically fetch topicks's external dependencies." ON)
+if(TOPICKS_FETCH_EXTERN)
     add_subdirectory(extern)
 else()
-    find_package(ltla_sanisizer 0.1.2 CONFIG REQUIRED)
+    find_package(ltla_sanisizer 0.2.0 CONFIG REQUIRED)
 endif()
 
 target_link_libraries(topicks INTERFACE ltla::sanisizer)
 
 # Tests
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    option(TOPICKER_TESTS "Build topicks's test suite." ON)
+    option(TOPICKS_TESTS "Build topicks's test suite." ON)
 else()
-    option(TOPICKER_TESTS "Build topicks's test suite." OFF)
+    option(TOPICKS_TESTS "Build topicks's test suite." OFF)
 endif()
 
-if(TOPICKER_TESTS)
+if(TOPICKS_TESTS)
     include(CTest)
     if(BUILD_TESTING)
         add_subdirectory(tests)
